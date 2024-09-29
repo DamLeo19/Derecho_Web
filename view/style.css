@@ -1001,13 +1001,6 @@
   }
   
   
-  
-  
-  
-  /*-----------------------------------*\
-    #SPECIAL DISH
-  \*-----------------------------------*/
-  
   .special-dish-content { padding-block: 70px; }
   
   .special-dish .abs-img {
@@ -1038,10 +1031,7 @@
   
   
   
-  /*-----------------------------------*\
-    #MENU
-  \*-----------------------------------*/
-  
+
   .menu .section-title { margin-block-end: 40px; }
   
   .menu .grid-list { margin-block-end: 50px; }
@@ -1160,11 +1150,7 @@
   
   
   
-  
-  /*-----------------------------------*\
-    #RESERVATION
-  \*-----------------------------------*/
-  
+
   .reservation-form { margin-block-start: -270px; }
   
   .form-text { margin-block-end: 40px; }
@@ -1801,10 +1787,7 @@
   
   
   
-    /**
-     * SPECIAL DISH
-     */
-  
+    
     .special-dish {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1829,9 +1812,6 @@
   
   
   
-    /**
-     * MENU
-     */
   
     .menu .grid-list {
       position: relative;
@@ -1860,9 +1840,7 @@
   
   
   
-    /**
-     * RESERVATION
-     */
+   
   
     .reservation-form {
       display: grid;
@@ -2096,9 +2074,7 @@
   
   
   
-    /**
-     * SPECIAL DISH
-     */
+    
   
     .special-dish {
       overflow: visible;
