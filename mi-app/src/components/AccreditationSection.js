@@ -7,8 +7,8 @@ function AccreditationSection() {
         <p className="section-subtitle label-2">RECONOCIMIENTOS</p>
         <h2 className="headline-1 section-title">Tenemos las siguientes acreditaciones</h2>
         <p className="section-text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the industry's
-          standard dummy text ever.
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the
+          industry's standard dummy text ever.
         </p>
         <ul className="grid-list">
           <li>

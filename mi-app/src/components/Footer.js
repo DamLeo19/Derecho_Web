@@ -1,9 +1,8 @@
-// src/components/Footer.js
 import React from 'react';
 
 function Footer() {
   return (
-    <footer className="footer section has-bg-image text-center" style={{ backgroundImage: `url('./assets/images/footer-bg.jpg')` }}>
+    <footer className="footer section has-bg-image text-center" style={{ backgroundImage: 'url(./assets/images/footer-bg.jpg)' }}>
       <div className="container">
         <div className="footer-top grid-list">
           <div className="footer-brand has-before has-after">
@@ -11,12 +10,69 @@ function Footer() {
               <img src="./assets/images/logo.svg" width="160" height="50" loading="lazy" alt="ucb home" />
             </a>
             <address className="body-4">
-              Universidad Catolica Boliviana - Bloque F Av. 14 de Septiembre Nº 4807 esquina, La Paz, Bolivia
+              Universidad Catolica Boliviana - Bloque F
+              Av. 14 de Septiembre Nº 4807 esquina, La Paz, Bolivia
             </address>
             <a href="mailto:booking@ucb.com" className="body-4 contact-link">booking@ucb.com</a>
-            <a href="tel:+88123123456" className="body-4 contact-link">Booking Request : +88-123-123456</a>
+            <a href="tel:+88-123-123456" className="body-4 contact-link">Booking Request : +88-123-123456</a>
+            <p className="body-4">Open : 09:00 am - 01:00 pm</p>
+            <div className="wrapper">
+              <div className="separator"></div>
+              <div className="separator"></div>
+              <div className="separator"></div>
+            </div>
+            <p className="title-1">Get News & Offers</p>
+            <p className="label-1">
+              Subscribe us & Get <span className="span">25% Off.</span>
+            </p>
+            <form action="" className="input-wrapper">
+              <div className="icon-wrapper">
+                <ion-icon name="mail-outline" aria-hidden="true"></ion-icon>
+                <input type="email" name="email_address" placeholder="Your email" autoComplete="off" className="input-field" />
+              </div>
+              <button type="submit" className="btn btn-secondary">
+                <span className="text text-1">Subscribe</span>
+                <span className="text text-2" aria-hidden="true">Subscribe</span>
+              </button>
+            </form>
           </div>
-          {/* Añadir otras listas de enlaces de pie de página */}
+          <ul className="footer-list">
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Inicio</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Convenios</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Sobre nosotros</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Docentes</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Contactos</a>
+            </li>
+          </ul>
+          <ul className="footer-list">
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Facebook</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Instagram</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Twitter</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Youtube</a>
+            </li>
+            <li>
+              <a href="#" className="label-2 footer-link hover-underline">Google Map</a>
+            </li>
+          </ul>
+        </div>
+        <div className="footer-bottom">
+          <p className="copyright">&copy; All Rights Reserved | Crafted by</p>
         </div>
       </div>
     </footer>

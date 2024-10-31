@@ -1,12 +1,12 @@
-// src/components/Header.js
 import React from 'react';
+import '../index.css';
 
 function Header() {
   return (
     <header className="header" data-header>
       <div className="container">
         <a href="#" className="logo">
-          <img src="./assets/images/logoDerecho.png" width="160" height="50" alt="Carrera de Derecho" />
+          <img src="./images/logoDerecho.png" width="160" height="50" alt="Carrera de Derecho" />
         </a>
         <nav className="navbar" data-navbar>
           <button className="close-btn" aria-label="close menu" data-nav-toggler>
@@ -19,9 +19,50 @@ function Header() {
                 <span className="span">Home</span>
               </a>
             </li>
-            {/* Añadir los otros enlaces de la barra de navegación */}
+            <li className="navbar-item">
+              <a href="#menu" className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <span className="span">Inicio</span>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#about" className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <span className="span">Sobre nosotros</span>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#" className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <span className="span">Docentes</span>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#" className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <span className="span">Contactos</span>
+              </a>
+            </li>
           </ul>
+          <div className="text-center">
+            <p className="headline-1 navbar-title">Visitanos!</p>
+            <address className="body-4">
+              Universidad Catolica Boliviana - Bloque F
+              Av. 14 de Septiembre Nº 4807 esquina, La Paz, Bolivia
+            </address>
+            <p className="body-4 navbar-text">Abierto: 8:00am - 16:00pm</p>
+            <a href="mailto:booking@ucb.com" className="body-4 sidebar-link">derecho@ucb.com</a>
+            <div className="separator"></div>
+            <p className="contact-label">Request</p>
+            <a href="tel:+88123123456" className="body-1 contact-number hover-underline">
+              +123456789
+            </a>
+          </div>
         </nav>
+        <a href="#" className="btn btn-secondary">
+          <span className="text text-1">Malla curricular</span>
+          <span className="text text-2" aria-hidden="true">Malla curricular</span>
+        </a>
         <button className="nav-open-btn" aria-label="open menu" data-nav-toggler>
           <span className="line line-1"></span>
           <span className="line line-2"></span>
@@ -34,3 +75,6 @@ function Header() {
 }
 
 export default Header;
+
+/* CSS - Create a file named Header.css in the same directory */
+

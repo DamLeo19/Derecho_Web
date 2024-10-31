@@ -2116,3 +2116,45 @@
     }
   
   }
+
+  .header {
+    position: relative;
+  }
+  
+  .navbar {
+    max-height: 100vh; /* Limit the navbar height to the viewport height */
+    overflow-y: auto;  /* Enable scrolling if the content exceeds the height */
+  }
+  
+  body {
+    overflow-y: scroll; /* Ensure the page always has a scrollbar */
+  }
+  
+  .container {
+    overflow: visible; /* Ensure the container doesn't hide overflowing content */
+  }
+  
+  .nav-open-btn {
+    cursor: pointer;
+  }
+  
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    z-index: 1;
+  }
+  
+  .overlay.active {
+    display: block;
+  }
+  /* Asegura que los convenios se muestren uno debajo del otro */
+.grid-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

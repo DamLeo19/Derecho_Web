@@ -8,6 +8,7 @@ import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import './index.css'; // Importación corregida
 
+
 function App() {
   return (
     <div>
