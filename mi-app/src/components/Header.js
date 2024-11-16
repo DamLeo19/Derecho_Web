@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import '../index.css';
 
 function Header() {
@@ -16,7 +17,7 @@ function Header() {
             <li className="navbar-item">
               <a href="#home" className="navbar-link hover-underline active">
                 <div className="separator"></div>
-                <span className="span">Home</span>
+                <Link to="/">Home</Link>
               </a>
             </li>
             <li className="navbar-item">
@@ -29,6 +30,12 @@ function Header() {
               <a href="#about" className="navbar-link hover-underline">
                 <div className="separator"></div>
                 <span className="span">Sobre nosotros</span>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="#about" className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <Link to="/clinica">Clinican Juridica</Link>
               </a>
             </li>
             <li className="navbar-item">

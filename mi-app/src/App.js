@@ -1,25 +1,18 @@
-import React from 'react';
-import Header from './components/Header';
-import HeroSlider from './components/HeroSlider';
-import AboutSection from './components/AboutSection';
-import AccreditationSection from './components/AccreditationSection';
-import SpecialDishSection from './components/SpecialDishSection';
-import ContactForm from './components/ContactForm';
-import Footer from './components/Footer';
-import './index.css'; // Importación corregida
-
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import HomeSection from "./ventanas/Home.js"
+import ClinicaJuridicaSection from "./ventanas/ClinicaJuridica.js";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <HeroSlider />
-      <AboutSection />
-      <AccreditationSection />
-      <SpecialDishSection />
-      <ContactForm />
-      <Footer />
-    </div>
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<HomeSection />} />
+          <Route path="/clinica" element={<ClinicaJuridicaSection />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
