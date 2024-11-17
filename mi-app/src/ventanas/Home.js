@@ -8,11 +8,15 @@ import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
 import '../index.css'; // Importación corregida
 
-
 function Home() {
+  const userName = localStorage.getItem('userName'); // Obtenemos el nombre del usuario
+
   return (
     <div>
       <Header />
+      <div className="user-greeting">
+        {userName && <h1>Bienvenido, {userName}</h1>} {/* Muestra el nombre si está disponible */}
+      </div>
       <HeroSlider />
       <AboutSection />
       <AccreditationSection />

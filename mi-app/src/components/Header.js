@@ -35,7 +35,7 @@ function Header() {
             <li className="navbar-item">
               <a href="#about" className="navbar-link hover-underline">
                 <div className="separator"></div>
-                <Link to="/clinica">Clinican Juridica</Link>
+                <Link to="/clinica">Clínica Jurídica</Link>
               </a>
             </li>
             <li className="navbar-item">
@@ -50,11 +50,23 @@ function Header() {
                 <span className="span">Contactos</span>
               </a>
             </li>
+            <li className="navbar-item">
+              <a className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <Link to="/register">Registrarte</Link>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <Link to="/login">Login</Link>
+              </a>
+            </li>
           </ul>
           <div className="text-center">
-            <p className="headline-1 navbar-title">Visitanos!</p>
+            <p className="headline-1 navbar-title">Visítanos!</p>
             <address className="body-4">
-              Universidad Catolica Boliviana - Bloque F
+              Universidad Católica Boliviana - Bloque F
               Av. 14 de Septiembre Nº 4807 esquina, La Paz, Bolivia
             </address>
             <p className="body-4 navbar-text">Abierto: 8:00am - 16:00pm</p>
@@ -82,6 +94,3 @@ function Header() {
 }
 
 export default Header;
-
-/* CSS - Create a file named Header.css in the same directory */
-
