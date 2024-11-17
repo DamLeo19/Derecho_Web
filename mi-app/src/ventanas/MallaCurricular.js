@@ -99,6 +99,7 @@ function MallaCurricular() {
           <p><span className="leyenda-verde"></span> Materias que son requisitos para la materia seleccionada</p>
           <p><span className="leyenda-rojo"></span> Materia sin requisitos</p>
         </div>
+        <a href="/DER-2024-ok.pdf" download className="btn-download">Descargar Malla Curricular</a>
         {semestres.map(semestre => (
           <div key={semestre} className="semestre">
             <h2>Semestre {semestre}</h2>
