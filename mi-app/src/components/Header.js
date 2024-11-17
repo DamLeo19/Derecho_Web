@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import '../index.css';
 
 function Header() {
@@ -15,10 +15,15 @@ function Header() {
           </button>
           <ul className="navbar-list">
             <li className="navbar-item">
-              <a href="#home" className="navbar-link hover-underline active">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
+                }
+              >
                 <div className="separator"></div>
-                <Link to="/">Home</Link>
-              </a>
+                Home
+              </NavLink>
             </li>
             <li className="navbar-item">
               <a href="#menu" className="navbar-link hover-underline">
@@ -33,10 +38,15 @@ function Header() {
               </a>
             </li>
             <li className="navbar-item">
-              <a href="#about" className="navbar-link hover-underline">
+              <NavLink
+                to="/clinica"
+                className={({ isActive }) =>
+                  isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
+                }
+              >
                 <div className="separator"></div>
-                <Link to="/clinica">Clinican Juridica</Link>
-              </a>
+                Clinica Juridica
+              </NavLink>
             </li>
             <li className="navbar-item">
               <a href="#" className="navbar-link hover-underline">

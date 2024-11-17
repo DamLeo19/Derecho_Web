@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomeSection from "./ventanas/Home.js"
-import ClinicaJuridicaSection from "./ventanas/ClinicaJuridica.js";
+import ClinicaJuridicaSection from "./ventanas/ClinicaJuridica.jsx";
 
 function App() {
   return (

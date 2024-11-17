@@ -1,0 +1,179 @@
+/* Estilos para el banner */
+.clinica-banner {
+    margin-top: 5%;
+    position: relative;
+    height: 500px;
+    background-image: url('../images/clinicaJuridicaBanner.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.clinica-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clinica-title {
+    color: white;
+    font-size: 48px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Estilos para el contenido principal */
+.clinica-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 1200px;
+    margin: 100px auto;
+    gap: 40px;
+}
+
+.clinica-img {
+    width: 400px;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clinica-img:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 0 10px rgba(255, 255, 255, 0.2) inset;
+}
+
+.clinica-text {
+    display: flex;
+    height: 200px;
+    max-width: 800px;
+    background-color: #cd5f2a;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.clinica-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    width: 80%;
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+}
+
+.about-container {
+    display: flex;
+    margin: 80px auto;
+    width: 60em;
+    height: 10em;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: #cd5f2a;
+}
+
+.about-container p {
+    font-size: 18px;
+    line-height: 1.6;
+    width: 80%;
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+}
+
+/* Estilos para la lista animada */
+.lista-container {
+    width: 80%;
+    max-width: 800px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+.lista-title {
+    width: 80%;
+    max-width: 800px;
+    height: 100%;
+    max-height: 500px;
+    margin: auto;
+}
+
+.lista-container h2 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: #cd5f2a;
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+}
+
+.lista-servicios {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-item {
+    margin-bottom: 20px;
+    padding: 20px;
+    font-size: 24px;
+    border-radius: 8px;
+    text-align: left;
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+}
+
+.accordion{
+    margin: 50px auto;
+    padding: 20px;
+    max-width: 1000px;
+    background-color: #cd5f2a;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accordion h2{
+    padding-bottom: 2%;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #696767;
+}
+
+.accordion-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    cursor: pointer;
+    background-color: #a75b35;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-family: "Geist", sans-serif;
+    font-weight: 700;
+}
+
+.accordion-title.active {
+    background-color: #a75b35;
+}
+
+.accordion-title h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.accordion-content {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    font-size: 16px;
+    color: #333;
+    font-family: "Geist", sans-serif;
+    font-weight: 500;
+}
