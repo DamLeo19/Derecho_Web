@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './ClinicaJuridica.css';
@@ -20,7 +20,7 @@ const ClinicaJuridica = () => {
         },
         {
             title: "¿Cómo puedo contactarme?",
-            content: `Puede enviar un correo hacia "ccareaga@ucb.edu.bo" o llamar al siguiente numero: 75841214.`,
+            content: `Puede enviar un correo hacia "ccareaga@ucb.edu.bo" o llamar al siguiente número: 75841214.`,
         },
         {
             title: "¿Cuáles son los horarios de atención?",
@@ -34,12 +34,29 @@ const ClinicaJuridica = () => {
         setActiveIndex(activeIndex === index ? null : index);
     };
 
+    // Estado para detectar si es móvil
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkIsMobile = () => {
+            setIsMobile(window.innerWidth <= 768);
+        };
+
+        checkIsMobile(); // Verificamos inicialmente
+
+        window.addEventListener("resize", checkIsMobile);
+
+        return () => {
+            window.removeEventListener("resize", checkIsMobile);
+        };
+    }, []);
+
     return (
         <div>
             <Header />
             <div className="clinica-banner">
                 <div className="clinica-overlay">
-                    <h1 className="clinica-title">Clinica Jurídica</h1>
+                    <h1 className="clinica-title">Clínica Jurídica</h1>
                 </div>
             </div>
 
@@ -57,7 +74,7 @@ const ClinicaJuridica = () => {
                     }}
                     viewport={{ once: true }}
                 >
-                    <p>La Carrera de Derecho cuenta con la “Clínica Jurídica U.C.B.  San Pablo”, la que se constituye en dos asignaturas obligatorias de la malla curricular de la Carrera de Derecho y a su vez en una oficina de servicio gratuito para personas de escasos recursos económicos.</p>
+                    <p>La Carrera de Derecho cuenta con la “Clínica Jurídica U.C.B. San Pablo”, la que se constituye en dos asignaturas obligatorias de la malla curricular de la Carrera de Derecho y a su vez en una oficina de servicio gratuito para personas de escasos recursos económicos.</p>
                 </motion.div>
             </div>
 
@@ -73,7 +90,7 @@ const ClinicaJuridica = () => {
                     >
                         <motion.div
                             initial={{ left: 0 }}
-                            whileInView={{ left: "100%", transition: { duration: 0.5 }, ease: "easiIn" }}
+                            whileInView={{ left: "100%", transition: { duration: 0.5 }, ease: "easeIn" }}
                             style={{
                                 height: 50,
                                 position: "absolute",
@@ -107,53 +124,37 @@ const ClinicaJuridica = () => {
 
             <motion.div
                 className="clinica-content"
-                style={{
-                    width: "100em",
-                    height: 300,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    margin: "100px auto",
-                    marginTop: "200px auto"
-                }}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 50, transition: { duration: 2.5 } }}
-                viewport={{ amount: 0.1, once: true}}
+                initial={{ opacity: 0, x: isMobile ? 0 : -50 }}
+                whileInView={{ opacity: 1, x: 0, transition: { duration: 2.5 } }}
+                viewport={{ amount: 0.1, once: true }}
             >
                 <img
                     src="https://i0.wp.com/ucblpz.com/wp-content/uploads/2019/02/619A0994.jpg?w=1080&ssl=1"
-                    alt="Imagen Clinica"
+                    alt="Imagen Clínica"
                     className="clinica-img"
                 />
                 <div className="clinica-text">
                     <p>
-                        En esta asignatura, los estudiantes de últimos semestres, bajo la supervisión de docentes especializados, realizan práctica jurídica pre profesional, consistente en la gestión de procesos judiciales y asesoramiento jurídico.
+                        En esta asignatura, los estudiantes de últimos semestres, bajo la supervisión de docentes especializados, realizan práctica jurídica preprofesional, consistente en la gestión de procesos judiciales y asesoramiento jurídico.
                     </p>
                 </div>
             </motion.div>
 
             <motion.div
                 className="clinica-content"
-                style={{
-                    width: "100em",
-                    height: 300,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                }}
-                initial={{ opacity: 0, x: 100 }}
-                whileInView={{ opacity: 1, x: 50, transition: { duration: 2.5 } }}
-                viewport={{ amount: 0.5, once:true }}
+                initial={{ opacity: 0, x: isMobile ? 0 : 100 }}
+                whileInView={{ opacity: 1, x: 0, transition: { duration: 2.5 } }}
+                viewport={{ amount: 0.5, once: true }}
             >
                 <div className="clinica-text">
                     <p>
-                        La “Clínica Jurídica U.C.B. San Pablo” implementa de forma semestral el “Consultorio Jurídico Móvil”, un espacio de servicio social y aprendizaje práctico, donde los estudiantes bajo la supervisión y guía de los docentes especializados brindan asesoramiento jurídico a personas de escasos recursos económicos y que radican en zonas rurales y sub urbanas del Departamento de La Paz.
+                        La “Clínica Jurídica U.C.B. San Pablo” implementa de forma semestral el “Consultorio Jurídico Móvil”, un espacio de servicio social y aprendizaje práctico, donde los estudiantes bajo la supervisión y guía de los docentes especializados brindan asesoramiento jurídico a personas de escasos recursos económicos y que radican en zonas rurales y suburbanas del Departamento de La Paz.
                     </p>
                 </div>
 
                 <img
                     src="https://i0.wp.com/ucblpz.com/wp-content/uploads/2019/02/619A1015.jpg?w=1080&ssl=1"
-                    alt="Imagen Clinica"
+                    alt="Imagen Clínica"
                     className="clinica-img"
                 />
             </motion.div>
@@ -162,7 +163,7 @@ const ClinicaJuridica = () => {
                 className="acordion-content"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1, transition: { duration: 2.5 } }}
-                viewport={{ amount: 0.5, once:true }}
+                viewport={{ amount: 0.5, once: true }}
             >
                 <div className="accordion">
                     <h2>Preguntas Frecuentes</h2>
@@ -190,4 +191,3 @@ const ClinicaJuridica = () => {
 };
 
 export default ClinicaJuridica;
-
