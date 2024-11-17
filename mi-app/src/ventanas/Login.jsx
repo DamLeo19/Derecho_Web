@@ -45,7 +45,7 @@ const Login = () => {
                     required 
                 />
                 <button type="submit">Iniciar Sesión</button>
-                <a href="/registro" className="link">¿No tienes cuenta? Regístrate</a>
+                <a href="/register" className="link">¿No tienes cuenta? Regístrate</a>
             </form>
         </div>
     );
