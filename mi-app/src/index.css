@@ -2169,3 +2169,46 @@ display: flex;
 flex-direction: column;
 gap: 2rem;
 }
+
+/* Estilos generales */
+.user-greeting {
+  display: flex;
+  justify-content: flex-start; /* Alinea el texto a la izquierda */
+  padding-left: 20px; /* Ajusta el espacio a la izquierda según sea necesario */
+  margin-top: 20px;
+}
+
+.welcome-message {
+  font-family: var(--fontFamily-dm_sans); /* Usa la fuente que ya estás utilizando */
+  font-size: 2.5rem; /* Ajusta el tamaño de la fuente según sea necesario */
+  color: var(--gold-crayola); /* Usa el color que prefieras */
+  animation: fadeIn 2s ease-in-out;
+  white-space: nowrap; /* Evita el salto de línea */
+}
+
+.user-name {
+  font-weight: bold;
+  color: var(--white);
+  animation: colorChange 3s infinite alternate;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes colorChange {
+  from {
+    color: var(--gold-crayola);
+  }
+  to {
+    color: var(--quick-silver);
+  }
+}

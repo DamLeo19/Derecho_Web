@@ -1,6 +1,55 @@
 import React from 'react';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import './AccreditationSection.css';
 
-function AccreditationSection() {
+const AccreditationSection = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
+  };
+
+  const acreditaciones = [
+    {
+      img: "./images/service-1.jpg",
+      title: "ACREDITADO 1",
+      details: "DETALLES"
+    },
+    {
+      img: "./images/service-2.jpg",
+      title: "ACREDITADO 2",
+      details: "DETALLES"
+    },
+    {
+      img: "./images/service-3.jpg",
+      title: "ACREDITADO 3",
+      details: "DETALLES"
+    },
+    // Agrega más acreditaciones según sea necesario
+  ];
+
   return (
     <section className="section service bg-black-10 text-center" aria-label="service">
       <div className="container">
@@ -10,99 +59,35 @@ function AccreditationSection() {
           Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the
           industry's standard dummy text ever.
         </p>
-        <ul className="grid-list">
-          <li>
-            <div className="service-card">
+        <Slider {...settings}>
+          {acreditaciones.map((acreditacion, index) => (
+            <div key={index} className="service-card">
               <a href="#" className="has-before hover:shine">
                 <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
                   <img
-                    src="./images/service-1.jpg"
+                    src={acreditacion.img}
                     width="285"
                     height="336"
                     loading="lazy"
-                    alt="ACREDITADO"
+                    alt={acreditacion.title}
                     className="img-cover"
                   />
                 </figure>
               </a>
               <div className="card-content">
                 <h3 className="title-4 card-title">
-                  <a href="#">ACREDITADO</a>
+                  <a href="#">{acreditacion.title}</a>
                 </h3>
                 <a href="#" className="btn-text hover-underline label-2">
-                  DETALLES
+                  {acreditacion.details}
                 </a>
               </div>
             </div>
-          </li>
-          <li>
-            <div className="service-card">
-              <a href="#" className="has-before hover:shine">
-                <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
-                  <img
-                    src="./assets/images/service-2.jpg"
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt="ACREDITADO"
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
-              <div className="card-content">
-                <h3 className="title-4 card-title">
-                  <a href="#">ACREDITADO</a>
-                </h3>
-                <a href="#" className="btn-text hover-underline label-2">
-                  DETALLES
-                </a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="service-card">
-              <a href="#" className="has-before hover:shine">
-                <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
-                  <img
-                    src="./assets/images/service-3.jpg"
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt="ACREDITADO"
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
-              <div className="card-content">
-                <h3 className="title-4 card-title">
-                  <a href="#">ACREDITADO</a>
-                </h3>
-                <a href="#" className="btn-text hover-underline label-2">
-                  DETALLES
-                </a>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <img
-          src="./assets/images/shape-1.png"
-          width="246"
-          height="412"
-          loading="lazy"
-          alt="shape"
-          className="shape shape-1 move-anim"
-        />
-        <img
-          src="./assets/images/shape-2.png"
-          width="343"
-          height="345"
-          loading="lazy"
-          alt="shape"
-          className="shape shape-2 move-anim"
-        />
+          ))}
+        </Slider>
       </div>
     </section>
   );
-}
+};
 
 export default AccreditationSection;

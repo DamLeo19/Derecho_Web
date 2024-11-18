@@ -6,10 +6,8 @@ import AccreditationSection from '../components/AccreditationSection';
 import SpecialDishSection from '../components/SpecialDishSection';
 import Footer from '../components/Footer';
 import '../index.css'; // Importación corregida
-import '../ventanas/herostyles.css' ;
-import '../ventanas/efectos.css' ;
-
-
+import '../ventanas/herostyles.css';
+import '../ventanas/efectos.css';
 
 function Home() {
   const userName = localStorage.getItem('userName'); // Obtenemos el nombre del usuario
@@ -18,7 +16,11 @@ function Home() {
     <div>
       <Header />
       <div className="user-greeting">
-        {userName && <h1>Bienvenido, {userName}</h1>} {/* Muestra el nombre si está disponible */}
+        {userName && (
+          <h1 className="welcome-message">
+            Bienvenido, <span className="user-name">{userName}</span>
+          </h1>
+        )}
       </div>
       <HeroSlider />
       <AboutSection />
