@@ -71,15 +71,17 @@ const NuevaPagina = () => {
           </div>
         </section>
         <section className="estudiantes-destacados">
-          <h2>Top 3 Estudiantes Destacados</h2>
+          <h1>Top 3 Estudiantes Destacados</h1>
           <div className="tarjetas-estudiantes">
             {estudiantesDestacados.map((estudiante, index) => (
-              <CardDocentes
-                key={index}
-                title={estudiante.nombre}
-                description={estudiante.descripcion}
-                imageUrl={estudiante.imagen}
-              />
+              <div className="tarjeta-estudiante-con-indicador" key={index}>
+                <span className="indicador">{`${index + 1}°`}</span>
+                <CardDocentes
+                  title={estudiante.nombre}
+                  description={estudiante.descripcion}
+                  imageUrl={estudiante.imagen}
+                />
+              </div>
             ))}
           </div>
         </section>

@@ -93,6 +93,7 @@
   position: absolute;
   backface-visibility: hidden; /* Oculta la cara trasera al girar */
   display: flex;
+  text-align: center;
   justify-content: center;
   align-items: center;
   border-radius: var(--radius-24);
@@ -106,8 +107,17 @@
   background-color: var(--black);
   transform: rotateY(180deg); /* Posiciona la cara trasera para el giro */
   text-align: center;
-  color: var(--black);
+  color: var(--white); /* Cambiado a blanco para mayor contraste */
+  padding: 20px; /* Espacio interno para que el texto no sobresalga */
+  font-size: 6rem; /* Aumenta el tamaño de la letra */
+  line-height: 1.5; /* Mejora la legibilidad del texto */
+  display: flex; /* Centra contenido adicional */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  border-radius: var(--radius-24); /* Mantiene bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
 }
+
 
 .tarjetas-estudiantes {
   display: flex;
@@ -178,4 +188,48 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.tarjetas-estudiantes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+  gap: 20px; /* Espaciado entre tarjetas */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tarjetas-estudiantes > *:nth-child(1) {
+  grid-column: 2 / 3; /* Centra la primera tarjeta */
+}
+
+.tarjetas-estudiantes > *:nth-child(2) {
+  grid-column: 1 / 2; /* Segunda tarjeta a la izquierda */
+}
+
+.tarjetas-estudiantes > *:nth-child(3) {
+  grid-column: 3 / 4; /* Tercera tarjeta a la derecha */
+}
+.tarjeta-estudiante-con-indicador {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+}
+
+.indicador {
+  position: absolute;
+  height: -80px;
+  top: 50%; /* Centrado verticalmente */
+  transform: translateY(-50%); /* Ajusta el centrado */
+  font-size: 10rem; /* Tamaño del texto */
+  font-weight: bold;
+  color: var(--gold-crayola); 
+}
+
+.tarjeta-estudiante-con-indicador:nth-child(odd) .indicador {
+  left: -40px; /* Coloca el indicador a la izquierda */
+}
+
+.tarjeta-estudiante-con-indicador:nth-child(even) .indicador {
+  left: -40px; /* Ahora también a la izquierda */
+  right: auto; /* Desactiva cualquier posición derecha */
 }
