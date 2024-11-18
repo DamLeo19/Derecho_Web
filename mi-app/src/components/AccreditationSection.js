@@ -33,18 +33,18 @@ const AccreditationSection = () => {
 
   const acreditaciones = [
     {
-      img: "./images/service-1.jpg",
-      title: "ACREDITADO 1",
+      img: "https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2023/01/web-Acreditada-SUB.jpg?resize=700%2C700&ssl=1",
+      title: "ACREDITADO EN LA SUB",
       details: "DETALLES"
     },
     {
-      img: "./images/service-2.jpg",
-      title: "ACREDITADO 2",
+      img: "https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2022/07/iidea.jpg?resize=700%2C700&ssl=1",
+      title: "ACREDITADO EN IIDEA",
       details: "DETALLES"
     },
     {
-      img: "./images/service-3.jpg",
-      title: "ACREDITADO 3",
+      img: "https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2023/01/web-Acreditada-SUB.jpg?resize=700%2C700&ssl=1",
+      title: "ACREDITADO EN LA SUB",
       details: "DETALLES"
     },
     // Agrega más acreditaciones según sea necesario
