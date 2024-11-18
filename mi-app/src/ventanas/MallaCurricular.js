@@ -69,12 +69,22 @@ function MallaCurricular() {
           document.getElementById(reqId).classList.remove('habilita');
         });
       }
+      if (materia.habilita.length > 0) {
+        materia.habilita.forEach(habId => {
+          document.getElementById(habId).classList.remove('habilita-azul');
+        });
+      }
     } else {
       if (selectedMateria) {
         const prevMateria = materias.find(m => m.id === selectedMateria);
         if (prevMateria.req.length > 0) {
           prevMateria.req.forEach(reqId => {
             document.getElementById(reqId).classList.remove('habilita');
+          });
+        }
+        if (prevMateria.habilita.length > 0) {
+          prevMateria.habilita.forEach(habId => {
+            document.getElementById(habId).classList.remove('habilita-azul');
           });
         }
       }
@@ -84,6 +94,13 @@ function MallaCurricular() {
           const reqElement = document.getElementById(reqId);
           reqElement.classList.add('habilita');
           reqElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
+      }
+      if (materia.habilita.length > 0) {
+        materia.habilita.forEach(habId => {
+          const habElement = document.getElementById(habId);
+          habElement.classList.add('habilita-azul');
+          habElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
         });
       }
     }
@@ -98,6 +115,7 @@ function MallaCurricular() {
         <div className="leyenda">
           <p><span className="leyenda-verde"></span> Materias que son requisitos para la materia seleccionada</p>
           <p><span className="leyenda-rojo"></span> Materia sin requisitos</p>
+          <p><span className="leyenda-azul"></span> Materias que habilita la materia seleccionada</p>
         </div>
         <a href="/DER-2024-ok.pdf" download className="btn-download">Descargar Malla Curricular</a>
         {semestres.map(semestre => (
