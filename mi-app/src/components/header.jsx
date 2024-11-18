@@ -1,14 +1,15 @@
-/* eslint-disable */
+// src/components/Header.js
 import React, { useState } from 'react';
-import { NavLink } from "react-router-dom";
-import '../index.css';
+import { Link } from 'react-router-dom';
+import Modal from './Modal'; // Importar el componente Modal
+import '../index.css'; // Importar el componente Modal
+
 
 function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   return (
     <header className="header" data-header>
@@ -48,17 +49,15 @@ function Header() {
                   Logros
                 </NavLink>
 
-            <li className="navbar-item">
-              <NavLink
-                to="/clinica"
-                className={({ isActive }) =>
-                  isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
-                }
-              >
-                <div className="separator"></div>
-                Clinica Juridica
+            <NavLink
+                  to="/logros"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
+                  }
+                >
+                  <div className="separator"></div>
+                  CLinica Juridica
               </NavLink>
-            </li>
             <li className="navbar-item">
               <NavLink
                 to="/docentes"
@@ -76,11 +75,23 @@ function Header() {
                 <span className="span">Contactos</span>
               </a>
             </li>
+            <li className="navbar-item">
+              <a className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <Link to="/register">Registrarte</Link>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <Link to="/login">Login</Link>
+              </a>
+            </li>
           </ul>
           <div className="text-center">
-            <p className="headline-1 navbar-title">Visitanos!</p>
+            <p className="headline-1 navbar-title">Visítanos!</p>
             <address className="body-4">
-              Universidad Catolica Boliviana - Bloque F
+              Universidad Católica Boliviana - Bloque F
               Av. 14 de Septiembre Nº 4807 esquina, La Paz, Bolivia
             </address>
             <p className="body-4 navbar-text">Abierto: 8:00am - 16:00pm</p>
@@ -92,20 +103,16 @@ function Header() {
             </a>
           </div>
         </nav>
-        <a href="#menu" className="btn btn-secondary">
+        <Link to="/malla-curricular" className="btn btn-secondary">
           <span className="text text-1">Malla curricular</span>
           <span className="text text-2" aria-hidden="true">Malla curricular</span>
-        </a>
-        <button className="nav-open-btn" aria-label="open menu" onClick={toggleMenu}>
-          <span className="line line-1"></span>
-          <span className="line line-2"></span>
-          <span className="line line-3"></span>
+        </Link>
+        <button onClick={openModal} className="btn btn-secondary">
+          <span className="text text-1">Mapa del Campus</span>
+          <span className="text text-2" aria-hidden="true">Mapa del Campus</span>
         </button>
-        <div
-          className={`overlay ${isMenuOpen ? "active" : ""}`}
-          onClick={toggleMenu}
-        ></div>
       </div>
+      {isModalOpen && <Modal closeModal={closeModal} />}
     </header>
   );
 }
