@@ -17,8 +17,9 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:5000/api/users/login', form);
             alert(`Bienvenido: Token generado -> ${response.data.token}`);
-            // Guardamos el nombre en localStorage
-            localStorage.setItem('userName', response.data.nombre); 
+            // Guardamos el nombre y el token en localStorage
+            localStorage.setItem('userName', response.data.nombre);
+            localStorage.setItem('token', response.data.token);
             // Redirigimos a la página principal
             navigate('/');
         } catch (error) {
