@@ -16,7 +16,7 @@ function AccreditationSection() {
               <a href="#" className="has-before hover:shine">
                 <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
                   <img
-                    src="./images/service-1.jpg"
+                    src="./images/acredi1.png"
                     width="285"
                     height="336"
                     loading="lazy"
