@@ -591,6 +591,16 @@
   
   
   
+  .slider-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  .slider-item.active {
+    display: block;
+    opacity: 1;
+  }
   
   
   /*-----------------------------------*\
@@ -601,7 +611,7 @@
   
   .header {
     position: fixed;
-    top: 0;
+    top: -1;
     left: 0;
     width: 100%;
     background-color: transparent;
@@ -656,18 +666,19 @@
   .navbar {
     position: fixed;
     background-color: var(--smoky-black-1);
-    top: 0;
+    top: 0; /* Esto asegura que el navbar comience desde el tope de la pantalla */
     left: -360px;
     bottom: 0;
     max-width: 360px;
     width: 100%;
     padding-inline: 30px;
-    padding-block-end: 50px;
+    padding-block: 20px 10px; /* Ajusta el espacio en la parte superior e inferior */
     overflow-y: auto;
     visibility: hidden;
     z-index: 2;
     transition: var(--transition-2);
-  }
+}
+
   
   .navbar.active {
     visibility: visible;

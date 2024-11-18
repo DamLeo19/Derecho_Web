@@ -1,18 +1,23 @@
 /* eslint-disable */
-
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from "react-router-dom";
 import '../index.css';
 
 function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <header className="header" data-header>
       <div className="container">
         <a href="#menu" className="logo">
           <img src="./images/logoDerecho.png" width="160" height="50" alt="Carrera de Derecho" />
         </a>
-        <nav className="navbar" data-navbar>
-          <button className="close-btn" aria-label="close menu" data-nav-toggler>
+        <nav className={`navbar ${isMenuOpen ? "active" : ""}`} data-navbar>
+          <button className="close-btn" aria-label="close menu" onClick={toggleMenu}>
             <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
           </button>
           <ul className="navbar-list">
@@ -62,17 +67,6 @@ function Header() {
               </NavLink>
             </li>
             <li className="navbar-item">
-              <NavLink
-                to="/docentes"
-                className={({ isActive }) =>
-                  isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
-                }
-              >
-                <div className="separator"></div>
-                Docentes
-              </NavLink>
-            </li>
-            <li className="navbar-item">
               <a href="#" className="navbar-link hover-underline">
                 <div className="separator"></div>
                 <span className="span">Contactos</span>
@@ -98,18 +92,18 @@ function Header() {
           <span className="text text-1">Malla curricular</span>
           <span className="text text-2" aria-hidden="true">Malla curricular</span>
         </a>
-        <button className="nav-open-btn" aria-label="open menu" data-nav-toggler>
+        <button className="nav-open-btn" aria-label="open menu" onClick={toggleMenu}>
           <span className="line line-1"></span>
           <span className="line line-2"></span>
           <span className="line line-3"></span>
         </button>
-        <div className="overlay" data-nav-toggler data-overlay></div>
+        <div
+          className={`overlay ${isMenuOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+        ></div>
       </div>
     </header>
   );
 }
 
 export default Header;
-
-/* CSS - Create a file named Header.css in the same directory */
-

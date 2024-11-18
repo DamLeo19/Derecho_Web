@@ -1,7 +1,7 @@
 // Docentes.js
 
 import React from "react";
-import Header from '../components/Header';
+import Header from '../components/header.jsx';
 import Footer from '../components/Footer';
 import Card from "../components/CardDocentes.js";
 import { motion } from "framer-motion";
