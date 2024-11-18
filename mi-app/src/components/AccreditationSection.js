@@ -7,8 +7,7 @@ function AccreditationSection() {
         <p className="section-subtitle label-2">RECONOCIMIENTOS</p>
         <h2 className="headline-1 section-title">Tenemos las siguientes acreditaciones</h2>
         <p className="section-text">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the
-          industry's standard dummy text ever.
+        Instituto Internacional de Acreditación del Derecho.
         </p>
         <ul className="grid-list">
           <li>
@@ -16,7 +15,7 @@ function AccreditationSection() {
               <a href="#" className="has-before hover:shine">
                 <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
                   <img
-                    src="./images/acredi1.png"
+                    src="https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2023/01/web-Acreditada-SUB.jpg?resize=700%2C700&ssl=1"
                     width="285"
                     height="336"
                     loading="lazy"
@@ -40,31 +39,7 @@ function AccreditationSection() {
               <a href="#" className="has-before hover:shine">
                 <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
                   <img
-                    src="./assets/images/service-2.jpg"
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt="ACREDITADO"
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
-              <div className="card-content">
-                <h3 className="title-4 card-title">
-                  <a href="#">ACREDITADO</a>
-                </h3>
-                <a href="#" className="btn-text hover-underline label-2">
-                  DETALLES
-                </a>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div className="service-card">
-              <a href="#" className="has-before hover:shine">
-                <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
-                  <img
-                    src="./assets/images/service-3.jpg"
+                    src="https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2022/07/iidea.jpg?resize=700%2C700&ssl=1"
                     width="285"
                     height="336"
                     loading="lazy"
