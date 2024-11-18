@@ -33,15 +33,15 @@ function Header() {
               </NavLink>
             </li>
             <li className="navbar-item">
-              <a href="#menu" className="navbar-link hover-underline">
-                <div className="separator"></div>
-                <span className="span">Inicio</span>
-              </a>
-            </li>
-            <li className="navbar-item">
               <a href="#about" className="navbar-link hover-underline">
                 <div className="separator"></div>
                 <span className="span">Sobre nosotros</span>
+              </a>
+            </li>
+            <li className="navbar-item">
+              <a href="/logros" className="navbar-link hover-underline">
+                <div className="separator"></div>
+                <span className="span">Logros</span>
               </a>
             </li>
             <li className="navbar-item">
