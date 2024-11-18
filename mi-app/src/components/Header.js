@@ -1,8 +1,14 @@
-import React from 'react';
-import { Link } from "react-router-dom";
-import '../index.css';
+// src/components/Header.js
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Modal from './Modal'; // Importar el componente Modal
 
 function Header() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <header className="header" data-header>
       <div className="container">
@@ -35,7 +41,7 @@ function Header() {
             <li className="navbar-item">
               <a href="#about" className="navbar-link hover-underline">
                 <div className="separator"></div>
-                <Link to="/clinica">Clínica Jurídica</Link>
+                <Link to="/clinica">Clinica Juridica</Link>
               </a>
             </li>
             <li className="navbar-item">
@@ -78,17 +84,16 @@ function Header() {
             </a>
           </div>
         </nav>
-        <a href="#" className="btn btn-secondary">
+        <Link to="/malla-curricular" className="btn btn-secondary">
           <span className="text text-1">Malla curricular</span>
           <span className="text text-2" aria-hidden="true">Malla curricular</span>
-        </a>
-        <button className="nav-open-btn" aria-label="open menu" data-nav-toggler>
-          <span className="line line-1"></span>
-          <span className="line line-2"></span>
-          <span className="line line-3"></span>
+        </Link>
+        <button onClick={openModal} className="btn btn-secondary">
+          <span className="text text-1">Mapa del Campus</span>
+          <span className="text text-2" aria-hidden="true">Mapa del Campus</span>
         </button>
-        <div className="overlay" data-nav-toggler data-overlay></div>
       </div>
+      {isModalOpen && <Modal closeModal={closeModal} />}
     </header>
   );
 }
