@@ -6,20 +6,15 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-    "framer-motion": "^11.11.17",
-    "gsap": "^3.12.5",
-    "motion": "^11.11.17",
-=======
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "express": "^4.21.1",
     "express-rate-limit": "^7.4.1",
+    "framer-motion": "^11.11.17",
+    "gsap": "^3.12.5",
     "helmet": "^8.0.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.8.1",
-    "node": "^18.20.5",
->>>>>>> origin/ChuteTest
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.28.0",

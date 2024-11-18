@@ -1,7 +1,7 @@
 // src/ventanas/MallaCurricular.js
 import React, { useState } from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import Header from '../components/header.jsx';
+import Footer from '../components/Footer.jsx';
 import '../components/MallaCurricular.css';
 
 const materias = [

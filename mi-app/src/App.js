@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DocentesSection from "./ventanas/Docentes.jsx";
 import Logros from "./ventanas/logros.jsx";
 import HomeSection from "./ventanas/Home.js";
-import ClinicaJuridicaSection from "./ventanas/ClinicaJuridica.js";
+import ClinicaJuridicaSection from "./ventanas/ClinicaJuridica.jsx";
 import MallaCurricular from "./ventanas/MallaCurricular";
 import Register from "./ventanas/Register";
 import Login from "./ventanas/Login";
