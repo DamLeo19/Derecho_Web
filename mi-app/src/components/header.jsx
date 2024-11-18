@@ -38,12 +38,16 @@ function Header() {
                 <span className="span">Sobre nosotros</span>
               </a>
             </li>
-            <li className="navbar-item">
-              <a href="/logros" className="navbar-link hover-underline">
-                <div className="separator"></div>
-                <span className="span">Logros</span>
-              </a>
-            </li>
+            <NavLink
+                  to="/logros"
+                  className={({ isActive }) =>
+                    isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
+                  }
+                >
+                  <div className="separator"></div>
+                  Logros
+                </NavLink>
+
             <li className="navbar-item">
               <NavLink
                 to="/clinica"
