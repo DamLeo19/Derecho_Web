@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Header from "../components/header";
-import Footer from "../components/Footer";
 import '../styles/noticias.css'
 
 function Noticias() {
@@ -25,7 +23,6 @@ function Noticias() {
 
     return (
         <>
-            <Header />
             <div className="banner">
                 <span className="banner-text">Sección de Noticias</span>
             </div>
@@ -37,7 +34,6 @@ function Noticias() {
                     </div>
                 ))}
             </div>
-            <Footer />
         </>
     );
 }
