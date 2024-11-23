@@ -1,0 +1,235 @@
+:root {
+  /**
+   * COLORS
+   */
+  --gold-crayola: #cd5f2a;
+  --quick-silver: hsla(0, 0%, 65%, 1);
+  --davys-grey: hsla(30, 3%, 34%, 1);
+  --smoky-black-1: hsla(40, 12%, 5%, 1);
+  --smoky-black-3: hsla(0, 3%, 7%, 1);
+  --eerie-black-1: hsla(210, 4%, 9%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+
+  /**
+   * TYPOGRAPHY
+   */
+  --fontFamily-dm_sans: 'DM Sans', sans-serif;
+
+  /* font-size */
+  --fontSize-headline-2: calc(1.3rem + 2.4vw);
+  --fontSize-title-2: 2.2rem;
+  --fontSize-body-3: 1.8rem;
+  --fontSize-label-1: 1.4rem;
+
+  /* line-height */
+  --lineHeight-5: 1.85em;
+
+  /**
+   * SPACING
+   */
+  --section-space: 70px;
+
+  /**
+   * BORDER RADIUS
+   */
+  --radius-24: 24px;
+
+  /**
+   * TRANSITION
+   */
+  --transition-1: 250ms ease;
+}
+
+.nueva-pagina {
+  padding-top: 0; /* Ajusta o elimina espacio adicional */
+
+  font-family: var(--fontFamily-dm_sans);
+  color: var(--white);
+  background-color: var(--eerie-black-1);
+}
+
+.contenido {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.titulo-principal {
+  font-size: var(--fontSize-headline-2);
+  line-height: var(--lineHeight-5);
+  text-align: center;
+  margin-bottom: var(--section-space);
+}
+
+.tarjetas {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.tarjeta {
+  width: 250px;
+  height: 350px;
+  perspective: 1000px; /* Permite la transformación 3D */
+  cursor: pointer;
+}
+
+.tarjeta-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* Habilita la visualización en 3D */
+  transition: transform var(--transition-1); /* Controla la duración del giro */
+}
+
+.tarjeta:hover .tarjeta-inner {
+  transform: rotateY(180deg); /* Aplica el giro al contenedor interno */
+}
+
+.tarjeta-frente,
+.tarjeta-reverso {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden; /* Oculta la cara trasera al girar */
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-24);
+}
+
+.tarjeta-frente {
+  background-color: var(--gold-crayola);
+}
+
+.tarjeta-reverso {
+  background-color: var(--black);
+  transform: rotateY(180deg); /* Posiciona la cara trasera para el giro */
+  text-align: center;
+  color: var(--white); /* Cambiado a blanco para mayor contraste */
+  padding: 20px; /* Espacio interno para que el texto no sobresalga */
+  font-size: 6rem; /* Aumenta el tamaño de la letra */
+  line-height: 1.5; /* Mejora la legibilidad del texto */
+  display: flex; /* Centra contenido adicional */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  border-radius: var(--radius-24); /* Mantiene bordes redondeados */
+  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
+}
+
+
+.tarjetas-estudiantes {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.estudiante {
+  margin-bottom: 20px;
+}
+
+.estudiante h3 {
+  font-size: var(--fontSize-title-2);
+  margin-bottom: 10px;
+}
+
+.estudiante p {
+  font-size: var(--fontSize-body-3);
+  color: var(--quick-silver);
+}
+
+.card__title--small {
+  font-size: var(--fontSize-label-1);
+  line-height: var(--lineHeight-5);
+  margin-bottom: 10px;
+  text-align: center;
+}
+.tarjeta-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-1);
+}
+
+.tarjeta:hover .tarjeta-inner {
+  transform: rotateY(180deg);
+}
+.trofeo {
+  position: absolute;
+  top: -15px; /* Ajusta según sea necesario */
+  right: -15px; /* Ajusta según sea necesario */
+  font-size: 2.5rem; /* Tamaño del trofeo */
+  color: var(--gold-crayola); /* Color del trofeo */
+}
+
+.tarjeta {
+  position: relative; /* Necesario para que el trofeo se posicione relativo a la tarjeta */
+}
+.logros-banner {
+  margin-top: 5%;
+  position: relative;
+  height: 70vh;
+  background-image: url('https://timelinecovers.pro/facebook-cover/download/blind-justice-symbol-facebook-cover.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.logros-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tarjetas-estudiantes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas */
+  gap: 20px; /* Espaciado entre tarjetas */
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tarjetas-estudiantes > *:nth-child(1) {
+  grid-column: 2 / 3; /* Centra la primera tarjeta */
+}
+
+.tarjetas-estudiantes > *:nth-child(2) {
+  grid-column: 1 / 2; /* Segunda tarjeta a la izquierda */
+}
+
+.tarjetas-estudiantes > *:nth-child(3) {
+  grid-column: 3 / 4; /* Tercera tarjeta a la derecha */
+}
+.tarjeta-estudiante-con-indicador {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+}
+
+.indicador {
+  position: absolute;
+  height: -80px;
+  top: 50%; /* Centrado verticalmente */
+  transform: translateY(-50%); /* Ajusta el centrado */
+  font-size: 10rem; /* Tamaño del texto */
+  font-weight: bold;
+  color: var(--gold-crayola); 
+}
+
+.tarjeta-estudiante-con-indicador:nth-child(odd) .indicador {
+  left: -40px; /* Coloca el indicador a la izquierda */
+}
+
+.tarjeta-estudiante-con-indicador:nth-child(even) .indicador {
+  left: -40px; /* Ahora también a la izquierda */
+  right: auto; /* Desactiva cualquier posición derecha */
+}

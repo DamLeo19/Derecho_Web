@@ -1,22 +1,25 @@
 import React from 'react';
+import Equilibrio from '../images/equilibrio.png';
+import Ley from '../images/ley.png';
+import Diosa from '../images/tribunal-de-justicia.png';
 
 function SpecialDishSection() {
   return (
     <section className="special-dish text-center" aria-labelledby="dish-label">
       <div className="special-dish-banner">
         <img
-          src="./assets/images/special-dish-banner.jpg"
+          src="https://derechoconstitucional.uexternado.edu.co/wp-content/uploads/sites/66/2023/08/clinica_juridica-744x462-1-jpg.webp"
           width="940"
           height="900"
           loading="lazy"
-          alt="special dish"
+          alt="clinicajuridica"
           className="img-cover"
         />
       </div>
       <div className="special-dish-content bg-black-10">
         <div className="container">
           <img
-            src="./assets/images/badge-1.png"
+            src={Ley}
             width="28"
             height="41"
             loading="lazy"
@@ -38,7 +41,7 @@ function SpecialDishSection() {
         </div>
       </div>
       <img
-        src="./assets/images/shape-4.png"
+        src= {Equilibrio}
         width="179"
         height="359"
         loading="lazy"
@@ -46,7 +49,7 @@ function SpecialDishSection() {
         className="shape shape-1"
       />
       <img
-        src="./assets/images/shape-9.png"
+        src={Diosa}
         width="351"
         height="462"
         loading="lazy"

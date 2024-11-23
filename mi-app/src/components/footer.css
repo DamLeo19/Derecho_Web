@@ -1,0 +1,68 @@
+.footer {
+  padding: 50px 0;
+  background-color: var(--eerie-black-1);
+  background-size: cover;
+  color: var(--white);
+}
+
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+  gap: 30px;
+  margin-top: 50px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column; /* Mantén el diseño en columnas para pantallas pequeñas */
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 180%;
+}
+
+.footer-brand .logo {
+  margin-bottom: 20px;
+}
+
+.footer-brand address,
+.footer-brand .contact-link {
+  font-size: var(--fontSize-body-3);
+  margin: 10px 0;
+  width: 100%;
+}
+
+.footer-link {
+  color: var(--white);
+  text-decoration: none;
+  font-size: var(--fontSize-body-2);
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: var(--gold-crayola);
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .footer-top {
+    grid-template-columns: 1fr; /* Para pantallas pequeñas, usa una sola columna */
+  }
+
+  .footer-brand {
+    margin-bottom: 20px; /* Añadir espacio debajo del contenido */
+  }
+
+ 
+}
+
+@media (min-width: 768px) {
+  .footer-brand {
+    flex-direction: row; /* En pantallas más grandes, distribuye los elementos en fila */
+    align-items: center; /* Centra los items verticalmente */
+    justify-content: flex-start; /* Alinea los items al inicio */
+  }
+
+  .footer-brand .logo {
+    margin-right: 20px; /* Añadir algo de espacio entre el logo y la información */
+  }
+}

@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap');
+/* Estilos globales para HeroSlider */
+.hero {
+    font-family: var(--fontFamily-forum); /* Fuente predeterminada */
+  }
+  
+  .hero .slider-item {
+    font-family: var(--fontFamily-forum); /* Asegura que todas las letras sigan esta fuente */
+  }
+  
+  .hero .slider-item .section-subtitle,
+  .hero .slider-item .hero-title,
+  .hero .slider-item .hero-text,
+  .hero .slider-item .btn,
+  .hero .hero-btn {
+    font-family: inherit;
+  }
+  
+  /* Específico para distintos niveles de texto */
+  .hero .hero-title {
+    font-size: var(--fontSize-display-1); /* Ajusta según tus preferencias */
+    font-weight: var(--weight-bold);
+  }
+  
+  .hero .hero-text {
+    font-size: var(--fontSize-body-2);
+    line-height: var(--lineHeight-5);
+    font-weight: var(--weight-regular);
+  }
+  
+  .hero .btn {
+    font-family: var(--fontFamily-dm_sans); /* Botones con DM Sans */
+    font-size: var(--fontSize-body-2);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--letterSpacing-2);
+  }
+  

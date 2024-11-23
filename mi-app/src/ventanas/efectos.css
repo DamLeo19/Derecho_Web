@@ -1,0 +1,67 @@
+.additional-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Espacio entre las imágenes */
+    margin-top: 20px; /* Separación del banner principal */
+  }
+  
+  .additional-images img {
+    border-radius: 50%; /* Opcional: redondear las imágenes */
+    animation: pulse 2s infinite;
+    transition: transform 0.3s ease;
+  }
+  
+  .additional-images img:hover {
+    transform: scale(1.1); /* Ampliar al pasar el mouse */
+  }
+  
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  
+  /* Posicionamiento relativo para que las imágenes se ubiquen en relación al contenedor */
+.about-banner {
+    position: relative;
+  }
+  
+  /* Estilo base para las imágenes adicionales */
+  .image {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    animation: pulse 2s infinite; /* Efecto de pulso */
+  }
+  
+  /* Posición específica para la imagen "Equilibrio" */
+  .equilibrio {
+    top: 0%; /* Ajusta verticalmente */
+    left: 10%; /* Ajusta horizontalmente */
+  }
+  
+  /* Posición específica para la imagen "Ley" */
+  .ley {
+    top: 80%; /* Ajusta verticalmente */
+    left: 110%; /* Ajusta horizontalmente */
+  }
+  .diosa {
+    top: 50%; /* Ajusta verticalmente */
+    left: -80%; /* Ajusta horizontalmente */
+  }
+  
+  /* Efecto de animación opcional (pulso) */
+  @keyframes pulse {
+    0%, 100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+  }
+  
