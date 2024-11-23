@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Header from '../components/header';
-import Footer from '../components/Footer';
 import './ClinicaJuridica.css';
 import { motion } from "framer-motion";
 
@@ -53,7 +51,6 @@ const ClinicaJuridica = () => {
 
     return (
         <div>
-            <Header />
             <div className="clinica-banner">
                 <div className="clinica-overlay">
                     <h1 className="clinica-title">Clínica Jurídica</h1>
@@ -78,7 +75,7 @@ const ClinicaJuridica = () => {
                 </motion.div>
             </div>
 
-            <div className="lista-container">
+            <div className="lista-container dark:bg-white dark:text-black">
                 <div className="lista-title">
                     <motion.div
                         variants={{
@@ -177,7 +174,7 @@ const ClinicaJuridica = () => {
                                 <span>{activeIndex === index ? "-" : "+"}</span>
                             </div>
                             {activeIndex === index && (
-                                <div className="accordion-content">
+                                <div className="accordion-content dark:text-black">
                                     <p>{item.content}</p>
                                 </div>
                             )}
@@ -185,7 +182,6 @@ const ClinicaJuridica = () => {
                     ))}
                 </div>
             </motion.div>
-            <Footer />
         </div>
     );
 };

@@ -5,7 +5,7 @@ import Diosa from '../images/tribunal-de-justicia.png';
 
 function SpecialDishSection() {
   return (
-    <section className="special-dish text-center" aria-labelledby="dish-label">
+    <section className="special-dish text-center dark:bg-white dark:text-black" aria-labelledby="dish-label">
       <div className="special-dish-banner">
         <img
           src="https://derechoconstitucional.uexternado.edu.co/wp-content/uploads/sites/66/2023/08/clinica_juridica-744x462-1-jpg.webp"
@@ -16,7 +16,7 @@ function SpecialDishSection() {
           className="img-cover"
         />
       </div>
-      <div className="special-dish-content bg-black-10">
+      <div className="special-dish-content bg-black-10 dark:bg-white dark:text-black">
         <div className="container">
           <img
             src={Ley}
@@ -26,9 +26,9 @@ function SpecialDishSection() {
             alt="badge"
             className="abs-img"
           />
-          <p className="section-subtitle label-2">¿Conoces nuestra clinica juridica?</p>
-          <h2 className="headline-1 section-title">Clinica Juridica</h2>
-          <p className="section-text">
+          <p className="section-subtitle label-2 dark:bg-white dark:text-black">¿Conoces nuestra clinica juridica?</p>
+          <h2 className="headline-1 section-title dark:bg-white dark:text-black">Clinica Juridica</h2>
+          <p className="section-text dark:bg-white dark:text-black">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
             industry's standard dummy text ever since an unknown printer took a galley of type.
           </p>
@@ -41,7 +41,7 @@ function SpecialDishSection() {
         </div>
       </div>
       <img
-        src= {Equilibrio}
+        src={Equilibrio}
         width="179"
         height="359"
         loading="lazy"

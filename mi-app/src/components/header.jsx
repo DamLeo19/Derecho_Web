@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Modal from './Modal'; // Importar el componente Modal
 import '../index.css'; // Importar estilos
+import { FaMoon, FaSun } from "react-icons/fa";
 
-function Header() {
+function Header({ theme, setTheme }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -11,8 +12,15 @@ function Header() {
   const closeModal = () => setIsModalOpen(false);
   const toggleMenu = () => setIsMenuOpen((prevState) => !prevState);
 
+  // Función para alternar entre modos
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.classList.toggle("dark", newTheme === "dark");
+  };
+
   return (
-    <header className="header" data-header>
+    <header className="header dark:bg-white dark:text-black" data-header>
       <div className="container">
         <Link to="/" className="logo">
           <img src="./images/logoDerecho.png" width="160" height="50" alt="Carrera de Derecho" />
@@ -96,20 +104,19 @@ function Header() {
                 Login
               </NavLink>
             </li>
+            <button
+              onClick={toggleTheme}
+              className="theme-icon-btn"
+              aria-label="Toggle theme"
+            >
+              {theme === "light" ? (
+                <FaMoon size={24} className="text-gray-700" />
+              ) : (
+                <FaSun size={24} className="text-yellow-400" />
+              )}
+            </button>
           </ul>
           <div className="text-center">
-            <p className="headline-1 navbar-title">Visítanos!</p>
-            <address className="body-4">
-              Universidad Católica Boliviana - Bloque F
-              Av. 14 de Septiembre Nº 4807 esquina, La Paz, Bolivia
-            </address>
-            <p className="body-4 navbar-text">Abierto: 8:00am - 16:00pm</p>
-            <a href="mailto:derecho@ucb.com" className="body-4 sidebar-link">derecho@ucb.com</a>
-            <div className="separator"></div>
-            <p className="contact-label">Request</p>
-            <a href="tel:+123456789" className="body-1 contact-number hover-underline">
-              +123456789
-            </a>
             <Link to="/malla-curricular" className="btn btn-secondary">
               <span className="text text-1">Malla curricular</span>
               <span className="text text-2" aria-hidden="true">Malla curricular</span>
@@ -118,10 +125,9 @@ function Header() {
               <span className="text text-1">Mapa del Campus</span>
               <span className="text text-2" aria-hidden="true">Mapa del Campus</span>
             </button>
-
-
           </div>
         </nav>
+
         <Link to="/malla-curricular" className="btn btn-secondary">
           <span className="text text-1">Malla curricular</span>
           <span className="text text-2" aria-hidden="true">Malla curricular</span>

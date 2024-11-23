@@ -5,13 +5,13 @@ import Logo from '../images/logoDerecho.png';
 
 function Footer() {
   return (
-    <footer className="footer section has-bg-image" style={{ backgroundImage: 'url(./assets/images/footer-bg.jpg)' }}>
+    <footer className="footer section has-bg-image dark:bg-white dark:text-black" style={{ backgroundImage: 'url(./assets/images/footer-bg.jpg)' }}>
       <div className="container">
         <div className="footer-top">
           {/* Sección de la marca */}
           <div className="footer-brand">
             <a href="#" className="logo">
-            <img src={Logo} width="160" height="50" alt="ucb home" />
+              <img src={Logo} width="160" height="50" alt="ucb home" />
             </a>
             <address className="body-4">
               Universidad Católica Boliviana - Bloque F<br />
