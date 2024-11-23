@@ -1,0 +1,68 @@
+/* Estilo principal para el contenedor */
+.admin-container {
+    max-width: 600px;
+    margin: 50px auto; /* Espaciado superior de 50px y centrado horizontal */
+    padding: 20px;
+    background-color: white; /* Fondo blanco */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  }
+  
+  /* Título */
+  .admin-title {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Texto oscuro */
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  /* Estilo del formulario */
+  .admin-form .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .admin-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .admin-form input,
+  .admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px;
+    font-size: 1.4rem;
+    color: #333;
+  }
+  
+  .admin-form textarea {
+    resize: none; /* Evita el redimensionamiento manual */
+  }
+  
+  /* Estilo del botón */
+  .admin-form button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1.5rem;
+    color: white;
+    background-color: #007bff; /* Color azul del botón */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .admin-form button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+  }
+  
+  /* Fondo blanco general para toda la página */
+  .body-admin{
+    background-color: rgb(245, 235, 235);
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  

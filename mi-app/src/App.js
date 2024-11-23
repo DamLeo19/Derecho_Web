@@ -8,6 +8,7 @@ import MallaCurricular from "./ventanas/MallaCurricular";
 import Register from "./ventanas/Register";
 import Login from "./ventanas/Login";
 import Noticias from "./ventanas/noticias.jsx";
+import AdminPage from './ventanas/AdminPage'; // Importa la página de administración
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/noticias" element={<Noticias />} />
+          <Route path="/admin" element={<AdminPage />} /> {/* Ruta para la página de administración */}
 
         </Routes>
       </div>

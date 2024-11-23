@@ -4,7 +4,8 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const userRoutes = require('./routes/userRoutes');
+const userRoutes = require('./routes/userRoutes'); // Rutas para usuarios
+const noticiasRoutes = require('./routes/noticiasRoutes'); // Importa las rutas de noticias
 
 const app = express();
 const PORT = 5000;
@@ -15,7 +16,7 @@ app.use(bodyParser.json()); // Analiza las solicitudes entrantes con cargas úti
 app.use(helmet()); // Configura cabeceras HTTP seguras para proteger la aplicación
 app.use(rateLimit({ // Limita la cantidad de solicitudes que una IP puede hacer en un período de tiempo
   windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 100 // limita cada IP a 100 solicitudes por ventana
+  max: 100 // Limita cada IP a 100 solicitudes por ventana
 }));
 
 // Conexión a MongoDB
@@ -27,6 +28,8 @@ mongoose.connect('mongodb+srv://imajesus08:gpEO6dQD8XSLrNnF@cluster0.7lkgp.mongo
     .catch(err => console.error('Error al conectar a MongoDB Atlas:', err));
 
 // Rutas
-app.use('/api/users', userRoutes);
+app.use('/api/users', userRoutes); // Rutas de usuarios
+app.use('/api/noticias', noticiasRoutes); // Asegúrate de que esta ruta esté definida en tu backend
 
+// Iniciar el servidor
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
