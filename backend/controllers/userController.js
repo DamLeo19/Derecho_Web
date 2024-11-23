@@ -2,18 +2,16 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// Registro
+// Registro de usuario
 exports.register = async (req, res) => {
     const { nombre, correo, password, admin } = req.body;
 
     try {
-        // Verificar si el correo ya está registrado
         const existingUser = await User.findOne({ correo });
         if (existingUser) {
             return res.status(400).json({ error: 'Esta cuenta ya existe' });
         }
 
-        // Si el correo no está registrado, proceder con el registro
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ nombre, correo, password: hashedPassword, admin: false });
         await newUser.save();
@@ -23,7 +21,7 @@ exports.register = async (req, res) => {
     }
 };
 
-
+// Inicio de sesión
 exports.login = async (req, res) => {
     const { correo, password } = req.body;
 
@@ -38,5 +36,26 @@ exports.login = async (req, res) => {
         res.json({ message: 'Inicio de sesión exitoso', token, nombre: user.nombre, admin: user.admin });
     } catch (error) {
         res.status(400).json({ error: 'Error al iniciar sesión', details: error });
+    }
+};
+
+// Obtener todos los usuarios
+exports.getUsers = async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error) {
+        res.status(400).json({ error: 'Error al obtener usuarios', details: error });
+    }
+};
+
+// Eliminar un usuario
+exports.deleteUser = async (req, res) => {
+    const { id } = req.params;
+    try {
+        await User.findByIdAndDelete(id);
+        res.json({ message: 'Usuario eliminado' });
+    } catch (error) {
+        res.status(400).json({ error: 'Error al eliminar el usuario', details: error });
     }
 };
