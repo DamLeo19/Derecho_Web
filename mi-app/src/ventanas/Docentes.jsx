@@ -1,8 +1,6 @@
 // Docentes.js
 
 import React from "react";
-import Header from '../components/header.jsx';
-import Footer from '../components/Footer';
 import Card from "../components/CardDocentes.js";
 import { motion } from "framer-motion";
 import './Docentes.css';
@@ -17,8 +15,7 @@ const Docentes = () => {
   };
 
   return (
-    <div>
-      <Header />
+    <div className="dark:bg-white">
       <div className="docentes-banner">
         <div className="docentes-overlay">
           <h1 className="docentes-title">Docentes</h1>
@@ -38,7 +35,7 @@ const Docentes = () => {
         viewport={{ once: true }}
       >
         <div className="director-container">
-          <h2>Director de Carrera</h2>
+          <h2 className=" dark:text-black">Director de Carrera</h2>
           <div className="director-card-container">
             <Card
               title={directorData.title}
@@ -57,7 +54,7 @@ const Docentes = () => {
         viewport={{ once: true }}
       >
         <div className="tiempo-completo-container">
-          <h2>Docentes de Tiempo Completo</h2>
+          <h2 className=" dark:text-black">Docentes de Tiempo Completo</h2>
           <div className="tiempo-completo-card-container">
             <Card
               title={"Ivette Brenda Miranda Parra"}
@@ -101,7 +98,7 @@ const Docentes = () => {
         viewport={{ once: true }}
       >
         <div className="medio-tiempo-container">
-          <h2>Docentes de Medio Tiempo</h2>
+          <h2 className=" dark:text-black">Docentes de Medio Tiempo</h2>
           <div className="medio-tiempo-card-container">
             <Card
               title={"Emma Nogales de Santiváñez"}
@@ -111,7 +108,6 @@ const Docentes = () => {
           </div>
         </div>
       </motion.div>
-      <Footer />
     </div>
   );
 };

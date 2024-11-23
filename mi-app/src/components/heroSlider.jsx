@@ -42,7 +42,7 @@ function HeroSlider() {
   };
 
   return (
-    <section className="hero text-center" id="home">
+    <section className="hero text-center dark:bg-white dark:text-black" id="home">
       <ul className="hero-slider" data-hero-slider>
         {slides.map((slide, index) => (
           <li

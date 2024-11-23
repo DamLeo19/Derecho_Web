@@ -46,18 +46,18 @@ const AccreditationSection = () => {
   ];
 
   return (
-    <section className="section service bg-black-10 text-center" aria-label="service">
-      <div className="container">
-        <p className="section-subtitle label-2">RECONOCIMIENTOS</p>
-        <h2 className="headline-1 section-title">Tenemos las siguientes acreditaciones</h2>
-        <p className="section-text">
+    <section className="section service bg-black-10 text-center dark:bg-white dark:text-black" aria-label="service">
+      <div className="container dark:bg-white dark:text-black">
+        <p className="section-subtitle label-2 dark:bg-white dark:text-black">RECONOCIMIENTOS</p>
+        <h2 className="headline-1 section-title dark:bg-white dark:text-black">Tenemos las siguientes acreditaciones</h2>
+        <p className="section-text dark:bg-white dark:text-black">
           Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the
           industry's standard dummy text ever.
         </p>
         <Slider {...settings}>
           {acreditaciones.map((acreditacion, index) => (
-            <div key={index} className="service-card">
-              <a href="#" className="has-before hover:shine">
+            <div key={index} className="service-card dark:bg-gray-100 dark:text-black">
+              <a href="#" className="has-before hover:shine dark:bg-white dark:text-black">
                 <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
                   <img
                     src={acreditacion.img}
@@ -69,8 +69,8 @@ const AccreditationSection = () => {
                   />
                 </figure>
               </a>
-              <div className="card-content">
-                <h3 className="title-4 card-title">
+              <div className="card-content dark:bg-gray-100 dark:text-black">
+                <h3 className="title-4 card-title dark:bg-gray-100 dark:text-black">
                   <a href="#">{acreditacion.title}</a>
                 </h3>
                 <a href="#" className="btn-text hover-underline label-2">

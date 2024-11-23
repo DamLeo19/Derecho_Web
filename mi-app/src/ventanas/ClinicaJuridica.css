@@ -213,9 +213,10 @@
     background-color: #f5f5f5;
     border-radius: 5px;
     font-size: 1.5rem;
-    color: #333;
-    font-family: "Geist", sans-serif;
-    font-weight: 500;
+}
+
+.accordion-content p {
+    color: black;
 }
 
 @media (max-width: 768px) {

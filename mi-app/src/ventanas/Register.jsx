@@ -21,35 +21,39 @@ const Register = () => {
     };
 
     return (
-        <div className="registro-container">
-            <form className="registro-card" onSubmit={handleSubmit}>
+        <div className="registro-container dark:bg-white dark:text-black">
+            <form className="registro-card dark:bg-white dark:text-black" onSubmit={handleSubmit}>
                 <h1>Crear Cuenta</h1>
-                <input 
-                    name="nombre" 
-                    type="text" 
-                    placeholder="Nombre" 
-                    onChange={handleChange} 
-                    required 
+                <input
+                    className='dark:bg-white dark:text-black'
+                    name="nombre"
+                    type="text"
+                    placeholder="Nombre"
+                    onChange={handleChange}
+                    required
                 />
-                <input 
-                    name="correo" 
-                    type="email" 
-                    placeholder="Correo" 
-                    onChange={handleChange} 
-                    required 
+                <input
+                    className='dark:bg-white dark:text-black'
+                    name="correo"
+                    type="email"
+                    placeholder="Correo"
+                    onChange={handleChange}
+                    required
                 />
-                <input 
-                    name="password" 
-                    type="password" 
-                    placeholder="Contraseña" 
-                    onChange={handleChange} 
-                    required 
+                <input
+                    className='dark:bg-white dark:text-black'
+                    name="password"
+                    type="password"
+                    placeholder="Contraseña"
+                    onChange={handleChange}
+                    required
                 />
-                <label>
-                    <input 
-                        name="admin" 
-                        type="checkbox" 
-                        onChange={handleChange} 
+                <label className='dark:bg-white dark:text-black'>
+                    <input
+                        className='dark:bg-white dark:text-black'
+                        name="admin"
+                        type="checkbox"
+                        onChange={handleChange}
                     />
                     ¿Es administrador?
                 </label>
