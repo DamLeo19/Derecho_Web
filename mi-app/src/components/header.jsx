@@ -82,13 +82,13 @@ function Header({ theme, setTheme }) {
             </li>
             <li className="navbar-item">
               <NavLink
-                to="/noticias"
+                to="/noticia"
                 className={({ isActive }) =>
                   isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
                 }
               >
                 <div className="separator"></div>
-                <Noticias></Noticias>
+                Noticias
               </NavLink>
             </li>
             <li className="navbar-item">
