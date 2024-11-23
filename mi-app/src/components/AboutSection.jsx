@@ -6,17 +6,17 @@ import Diosa from '../images/tribunal-de-justicia.png';
 
 function AboutSection() {
   return (
-    <section className="section about text-center" aria-labelledby="about-label" id="about">
+    <section className="section about text-center dark:bg-white" aria-labelledby="about-label" id="about">
       <div className="container">
         <div className="about-content">
-          <p className="label-2 section-subtitle" id="about-label">Our Story</p>
-          <h2 className="headline-1 section-title">Cada Carrera Revela una Historia</h2>
-          <p className="section-text">
-          La carrera de Derecho en la Universidad Católica Boliviana (UCB) en La Paz forma profesionales con un enfoque integral,
-           combinando conocimientos jurídicos sólidos, valores éticos y responsabilidad social. Destaca por su compromiso con la justicia y 
-           el desarrollo de habilidades críticas para la interpretación y aplicación del derecho en contextos locales e internacionales. 
-           Los estudiantes adquieren competencias en áreas como derecho penal, civil, constitucional y corporativo, 
-           con una formación humanista que busca contribuir al bien común y al fortalecimiento del estado de derecho en Bolivia.
+          <p className="label-2 section-subtitle  dark:text-black" id="about-label">Our Story</p>
+          <h2 className="headline-1 section-title  dark:text-black">Cada Carrera Revela una Historia</h2>
+          <p className="section-text  dark:text-black">
+            La carrera de Derecho en la Universidad Católica Boliviana (UCB) en La Paz forma profesionales con un enfoque integral,
+            combinando conocimientos jurídicos sólidos, valores éticos y responsabilidad social. Destaca por su compromiso con la justicia y
+            el desarrollo de habilidades críticas para la interpretación y aplicación del derecho en contextos locales e internacionales.
+            Los estudiantes adquieren competencias en áreas como derecho penal, civil, constitucional y corporativo,
+            con una formación humanista que busca contribuir al bien común y al fortalecimiento del estado de derecho en Bolivia.
           </p>
           <div className="contact-label">Contactanos</div>
           <a href="tel:+804001234567" className="body-1 contact-number hover-underline">

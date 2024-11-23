@@ -39,22 +39,24 @@ const Login = () => {
     };
 
     return (
-        <div className="login-container">
-            <form className="login-card" onSubmit={handleSubmit}>
+        <div className="login-container dark:bg-white dark:text-black">
+            <form className="login-card dark:bg-white dark:text-black" onSubmit={handleSubmit}>
                 <h1>Iniciar Sesión</h1>
-                <input 
-                    name="correo" 
-                    type="email" 
-                    placeholder="Correo" 
-                    onChange={handleChange} 
-                    required 
+                <input
+                    className='dark:bg-white dark:text-black'
+                    name="correo"
+                    type="email"
+                    placeholder="Correo"
+                    onChange={handleChange}
+                    required
                 />
-                <input 
-                    name="password" 
-                    type="password" 
-                    placeholder="Contraseña" 
-                    onChange={handleChange} 
-                    required 
+                <input
+                    className='dark:bg-white dark:text-black'
+                    name="password"
+                    type="password"
+                    placeholder="Contraseña"
+                    onChange={handleChange}
+                    required
                 />
                 <button type="submit">Iniciar Sesión</button>
                 <a href="/register" className="link">¿No tienes cuenta? Regístrate</a>

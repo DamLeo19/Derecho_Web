@@ -1,7 +1,5 @@
 // src/ventanas/MallaCurricular.js
 import React, { useState } from 'react';
-import Header from '../components/header.jsx';
-import Footer from '../components/Footer.jsx';
 import '../components/MallaCurricular.css';
 
 const materias = [
@@ -110,12 +108,11 @@ function MallaCurricular() {
 
   return (
     <div>
-      <Header />
-      <div className="malla-curricular">
+      <div className="malla-curricular dark:bg-white dark:text-black">
         <div className="leyenda">
-          <p><span className="leyenda-verde"></span> Materias que son requisitos para la materia seleccionada</p>
-          <p><span className="leyenda-rojo"></span> Materia sin requisitos</p>
-          <p><span className="leyenda-azul"></span> Materias que habilita la materia seleccionada</p>
+          <p className='dark:text-black'><span className="leyenda-verde"></span> Materias que son requisitos para la materia seleccionada</p>
+          <p className='dark:text-black'><span className="leyenda-rojo"></span> Materia sin requisitos</p>
+          <p className='dark:text-black'><span className="leyenda-azul"></span> Materias que habilita la materia seleccionada</p>
         </div>
         <a href="/DER-2024-ok.pdf" download className="btn-download">Descargar Malla Curricular</a>
         {semestres.map(semestre => (
@@ -130,14 +127,13 @@ function MallaCurricular() {
                   onClick={() => handleClick(materia.id)}
                 >
                   <h3>{materia.nombre}</h3>
-                  <p>{materia.id}</p>
+                  <p className='dark:text-black'>{materia.id}</p>
                 </div>
               ))}
             </div>
           </div>
         ))}
       </div>
-      <Footer />
     </div>
   );
 }

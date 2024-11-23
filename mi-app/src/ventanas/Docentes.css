@@ -84,3 +84,77 @@
     width: 60%;
     margin: 0 auto;
 }
+
+.card-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    flex-wrap: wrap; /* Permite que las tarjetas se envuelvan si hay muchas */
+    gap: 50px; /* Aumenta el espacio entre las tarjetas */
+  }
+
+  .descripcion-centro {
+    margin: 8rem auto 16rem; /* Aumenta el margen inferior para mayor separación */
+    padding: 2rem;
+    max-width: 800px;
+    background-color: #333; /* Color oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: #fff; /* Texto blanco */
+    animation: breathing 3s ease-in-out infinite; /* Animación de respiración */
+  }
+  
+  .descripcion-centro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--gold-crayola);
+  }
+  
+  .descripcion-centro p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #ccc; /* Texto gris claro */
+    margin-bottom: 1rem;
+  }
+  
+  @keyframes breathing {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .centro-estudiantes-banner {
+    margin-top: 5%;
+    position: relative;
+    height: 70vh;
+    background-image: url('../../public/images/centro.png'); /* Cambia la ruta a la ubicación de tu imagen */
+    background-size: cover;
+    background-position: center;
+  }
+  
+  .centro-estudiantes-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .centro-estudiantes-title {
+    color: white;
+    font-size: 5rem;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Geist", sans-serif;
+    margin: 0 20px;
+  }

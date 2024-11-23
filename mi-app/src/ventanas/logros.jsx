@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "../components/header";
-import CardDocentes from "../components/CardDocentes"; // Asegúrate de que la ruta sea correcta
-import Footer from "../components/Footer"; // Importa el Footer
+import CardDocentes from "../components/CardDocentes";
 import "./logros.css";
 import "../components/CardDocentes.css";
 
@@ -40,8 +38,7 @@ const NuevaPagina = () => {
   ];
 
   return (
-    <div className="nueva-pagina">
-      <Header />
+    <div className="nueva-pagina dark:bg-white dark:text-black">
       <div className="logros-banner">
         <div className="logros-overlay">
           <h1 className="logros-title">Logros</h1>
@@ -86,7 +83,6 @@ const NuevaPagina = () => {
           </div>
         </section>
       </main>
-      <Footer /> {/* Asegúrate de colocar el footer aquí */}
     </div>
   );
 };
