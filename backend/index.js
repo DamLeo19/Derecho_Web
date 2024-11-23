@@ -11,6 +11,7 @@ const app = express();
 const PORT = 5000;
 
 // Middlewares
+app.use(express.json());
 app.use(cors()); // Habilita CORS para permitir solicitudes desde diferentes dominios
 app.use(bodyParser.json()); // Analiza las solicitudes entrantes con cargas útiles JSON
 app.use(helmet()); // Configura cabeceras HTTP seguras para proteger la aplicación

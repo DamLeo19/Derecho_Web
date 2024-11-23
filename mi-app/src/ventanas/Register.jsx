@@ -3,23 +3,39 @@ import axios from 'axios';
 import '../styles/registro.css'; // Importamos los estilos
 
 const Register = () => {
-    const [form, setForm] = useState({ nombre: '', correo: '', password: '', admin: false });
+    const [form, setForm] = useState({ nombre: '', correo: '', password: '', admin: false }); // `admin` siempre es false
 
     const handleChange = (e) => {
-        const { name, value, type, checked } = e.target;
-        setForm({ ...form, [name]: type === 'checkbox' ? checked : value });
+        const { name, value } = e.target;
+        setForm({ ...form, [name]: value });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log('Formulario enviado:', form); // Verifica los valores aquí
+    
+        if (!form.nombre || !form.correo || !form.password) {
+            return alert('Por favor, completa todos los campos.');
+        }
+    
         try {
-            const response = await axios.post('http://localhost:5000/api/users/register', form);
+            const response = await axios.post('http://localhost:5000/api/users/register', form, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
             alert(response.data.message);
         } catch (error) {
-            alert(error.response?.data?.error || 'Error al registrar');
+            console.log('Error de registro:', error.response?.data || error);
+            
+            // Muestra el mensaje de error específico
+            if (error.response?.data?.error) {
+                alert(error.response.data.error);
+            } else {
+                alert('Error al registrar');
+            }
         }
     };
-
     return (
         <div className="registro-container">
             <form className="registro-card" onSubmit={handleSubmit}>
@@ -45,14 +61,7 @@ const Register = () => {
                     onChange={handleChange} 
                     required 
                 />
-                <label>
-                    <input 
-                        name="admin" 
-                        type="checkbox" 
-                        onChange={handleChange} 
-                    />
-                    ¿Es administrador?
-                </label>
+                {/* Ya no necesitamos el checkbox */}
                 <button type="submit">Registrar</button>
                 <a href="/login" className="link">¿Ya tienes cuenta? Inicia sesión</a>
             </form>
