@@ -13,7 +13,7 @@ import Header from "./components/header.jsx";
 import Footer from "./components/Footer.jsx";
 
 function AppContent({ theme, setTheme }) {
-  const location = useLocation(); // Ahora está dentro del Router
+  const location = useLocation();
 
   return (
     <div className="dark:bg-white">
@@ -28,6 +28,7 @@ function AppContent({ theme, setTheme }) {
         <Route path="/malla-curricular" element={<MallaCurricular />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/CentroEstudiantes" element={<CentroEstudiantes />} />
       </Routes>
       <Footer />
     </div>
@@ -51,18 +52,6 @@ function App() {
 
   return (
     <Router>
-      <div>
-        <Routes>
-          <Route path="/" element={<HomeSection />} />
-          <Route path="/clinica" element={<ClinicaJuridicaSection />} />
-          <Route path="/docentes" element={<DocentesSection /> } />
-          <Route path="/logros" element={<Logros /> } />
-          <Route path="/malla-curricular" element={<MallaCurricular />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/CentroEstudiantes" element={<CentroEstudiantes />} />
-        </Routes>
-      </div>
       <AppContent theme={theme} setTheme={setTheme} />
     </Router>
   );
