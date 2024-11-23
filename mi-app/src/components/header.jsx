@@ -73,9 +73,9 @@ function Header() {
               </NavLink>
             </li>
             <li className="navbar-item">
-              <a href="#contactos" className="navbar-link hover-underline">
+              <a href="/noticias" className="navbar-link hover-underline">
                 <div className="separator"></div>
-                <span className="span">Contactos</span>
+                <span className="span">Noticias</span>
               </a>
             </li>
             <li className="navbar-item">
