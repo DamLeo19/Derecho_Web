@@ -7,6 +7,7 @@ import ClinicaJuridicaSection from "./ventanas/ClinicaJuridica.jsx";
 import MallaCurricular from "./ventanas/MallaCurricular";
 import Register from "./ventanas/Register";
 import Login from "./ventanas/Login";
+import CentroEstudiantes from "./ventanas/CentroEstudiantes.jsx";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/malla-curricular" element={<MallaCurricular />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/CentroEstudiantes" element={<CentroEstudiantes />} />
         </Routes>
       </div>
     </Router>

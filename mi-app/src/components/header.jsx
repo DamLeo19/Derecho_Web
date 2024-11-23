@@ -73,6 +73,17 @@ function Header() {
               </NavLink>
             </li>
             <li className="navbar-item">
+              <NavLink
+                to="/CentroEstudiantes"
+                className={({ isActive }) =>
+                  isActive ? "navbar-link hover-underline active" : "navbar-link hover-underline"
+                }
+              >
+                <div className="separator"></div>
+                Centro de Estudiantes
+              </NavLink>
+            </li>
+            <li className="navbar-item">
               <a href="#contactos" className="navbar-link hover-underline">
                 <div className="separator"></div>
                 <span className="span">Contactos</span>
