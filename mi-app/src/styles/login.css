@@ -1,3 +1,15 @@
+/* Reset de márgenes y paddings */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Asegúrate de que la altura ocupe toda la pantalla */
+}
+
+.login-container {
+  height: 100vh; /* Asegúrate de que ocupe toda la vista */
+  overflow: hidden; /* Oculta cualquier contenido que pueda desbordarse */
+}
+
 /* login.css */
 .login-container {
   display: flex;
@@ -55,4 +67,16 @@
 
 .login-card .link:hover {
   text-decoration: underline;
+}
+/* Sección para el logo */
+.login-logo {
+  position: absolute;
+  top: 20px; /* Margen superior */
+  left: 40px; /* Margen izquierdo */
+}
+
+/* Logo */
+.login-logo img {
+  max-width: 250px; /* Tamaño del logo */
+  max-height: 250px;
 }

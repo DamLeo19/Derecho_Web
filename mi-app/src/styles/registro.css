@@ -65,3 +65,15 @@
 .registro-card .link:hover {
   text-decoration: underline;
 }
+/* Sección para el logo */
+.registro-logo {
+  position: absolute;
+  top: 20px; /* Margen superior */
+  left: 40px; /* Margen izquierdo */
+}
+
+/* Logo */
+.registro-logo img {
+  max-width: 250px; /* Tamaño del logo */
+  max-height: 250px;
+}

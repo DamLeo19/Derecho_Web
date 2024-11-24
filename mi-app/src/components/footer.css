@@ -3,8 +3,19 @@
   background-color: var(--eerie-black-1);
   background-size: cover;
   color: var(--white);
+  text-align: center; /* Opcional: para centrar el texto */
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0; /* Eliminar márgenes adicionales */
 }
 
+/* Hacer que el contenido principal tome el espacio restante */
+.main-content {
+  flex: 1; /* Expande esta sección para llenar el espacio disponible */
+}
 .footer-top {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */

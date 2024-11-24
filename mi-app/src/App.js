@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useLocation, BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import DocentesSection from "./ventanas/Docentes.jsx";
 import Logros from "./ventanas/logros.jsx";
 import HomeSection from "./ventanas/Home.js";
@@ -10,7 +9,6 @@ import Register from "./ventanas/Register";
 import Login from "./ventanas/Login";
 import Noticias from "./ventanas/noticias.jsx";
 import AdminPage from './ventanas/AdminPage'; // Importa la página de administración
-
 import CentroEstudiantes from "./ventanas/CentroEstudiantes.jsx";
 import Header from "./components/header.jsx";
 import Footer from "./components/Footer.jsx";
@@ -18,11 +16,13 @@ import Footer from "./components/Footer.jsx";
 function AppContent({ theme, setTheme }) {
   const location = useLocation();
 
+  // Condición para excluir el Header y el Footer en las rutas específicas
+  const excludeRoutes = ["/login", "/register"];
+  const shouldShowHeaderFooter = !excludeRoutes.includes(location.pathname);
+
   return (
-    <div className="dark:bg-white">
-      {location.pathname !== "/login" && location.pathname !== "/register" && (
-        <Header theme={theme} setTheme={setTheme} />
-      )}
+    <div className={`dark:bg-white`}>
+      {shouldShowHeaderFooter && <Header theme={theme} setTheme={setTheme} />}
       <Routes>
         <Route path="/" element={<HomeSection />} />
         <Route path="/clinica" element={<ClinicaJuridicaSection />} />
@@ -33,10 +33,9 @@ function AppContent({ theme, setTheme }) {
         <Route path="/login" element={<Login />} />
         <Route path="/CentroEstudiantes" element={<CentroEstudiantes />} />
         <Route path="/noticias" element={<Noticias />} />
-        <Route path="/admin" element={<AdminPage />} /> {/* Ruta para la página de administración */}
-
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      <Footer />
+      {shouldShowHeaderFooter && <Footer />}
     </div>
   );
 }
@@ -54,7 +53,7 @@ function App() {
 
   const handleChangeTheme = () => {
     setTheme(prevTheme => prevTheme === "light" ? "dark" : "light");
-  }
+  };
 
   return (
     <Router>

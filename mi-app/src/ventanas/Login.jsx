@@ -40,6 +40,9 @@ const Login = () => {
 
     return (
         <div className="login-container dark:bg-white dark:text-black">
+            <div className="login-logo">
+                <img src="../../images/LogoDerecho.png" alt="Logo de la carrera" />
+            </div>
             <form className="login-card dark:bg-white dark:text-black" onSubmit={handleSubmit}>
                 <h1>Iniciar Sesión</h1>
                 <input

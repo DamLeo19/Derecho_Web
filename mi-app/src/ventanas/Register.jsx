@@ -38,6 +38,9 @@ const Register = () => {
     };
     return (
         <div className="registro-container dark:bg-white dark:text-black">
+            <div className="registro-logo">
+                <img src="../../images/LogoDerecho.png" alt="Logo de la carrera" />
+            </div>
             <form className="registro-card dark:bg-white dark:text-black" onSubmit={handleSubmit}>
                 <h1>Crear Cuenta</h1>
                 <input
