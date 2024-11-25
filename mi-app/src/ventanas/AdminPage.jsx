@@ -138,6 +138,7 @@ const AdminPage = () => {
     <body className='body-admin'>
       <div className='admin-container'>
         <h1 className='admin-title'>Panel de Administración</h1>
+        <h1 className='admin-title'>Agregar Noticias</h1>
 
         {/* Formulario para Noticias */}
         <form onSubmit={handleSubmit} className='admin-form'>
