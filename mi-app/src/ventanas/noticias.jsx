@@ -23,12 +23,12 @@ function Noticias() {
 
     return (
         <>
-            <div className="banner">
+            <div className="banner" >
                 <span className="banner-text">Sección de Noticias</span>
             </div>
-            <div className="cards-container">
+            <div className="cards-container dark:bg-white dark:text-black">
                 {noticias.map((noticia) => (
-                    <div className="card" key={noticia._id}>
+                    <div className="card dark:bg-white dark:text-black" key={noticia._id}>
                         <h3>{noticia.nombre}</h3> {/* Nombre de la noticia */}
                         <p><strong>Fecha:</strong> {new Date(noticia.fecha).toLocaleDateString()}</p> {/* Fecha formateada */}
                         <p>{noticia.descripcion}</p> {/* Descripción */}

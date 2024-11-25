@@ -136,14 +136,13 @@ const AdminPage = () => {
 
   return (
     <body className='body-admin'>
-      <div className='admin-container'>
+      <div className='admin-container dark:bg-white dark:text-black'>
         <h1 className='admin-title'>Panel de Administración</h1>
         <h1 className='admin-title'>Agregar Noticias</h1>
 
         {/* Formulario para Noticias */}
         <form onSubmit={handleSubmit} className='admin-form'>
-          <h2>{editingId ? 'Editar Noticia' : 'Agregar Noticia'}</h2>
-          <div className='form-group'>
+          <div className='form-group '>
             <label htmlFor='nombre'>Nombre de la Noticia</label>
             <input
               type='text'
