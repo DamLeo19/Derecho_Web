@@ -1,0 +1,134 @@
+.button {
+    cursor: pointer;
+    border: none;
+    background: #cd5f2a;
+    color: #fff;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: grid;
+    place-content: center;
+    transition: background 300ms, transform 200ms;
+    font-weight: 600;
+    z-index: 1000;
+  }
+  
+  .button__text {
+    position: absolute;
+    inset: 0;
+    animation: text-rotation 8s linear infinite;
+  }
+  
+  .button__text > span {
+    position: absolute;
+    transform: rotate(calc(36deg * var(--index)));
+    inset: 7px;
+  }
+  
+  .button__circle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background: #212121;
+    color: #cd5f2a;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button__icon--copy {
+    position: absolute;
+    transform: translate(-150%, 150%);
+  }
+  
+  .button:hover {
+    background: #000;
+    transform: scale(1.05);
+  }
+  
+  .button:hover .button__icon {
+    color: #fff;
+  }
+  
+  .button:hover .button__icon:first-child {
+    transition: transform 0.3s ease-in-out;
+    transform: translate(150%, -150%);
+  }
+  
+  .button:hover .button__icon--copy {
+    transition: transform 0.3s ease-in-out 0.1s;
+    transform: translate(0);
+  }
+  
+  @keyframes text-rotation {
+    to {
+      rotate: 360deg;
+    }
+  }
+  
+  .button:active {
+    transform: scale(0.95);
+  }
+  .modal {
+    position: fixed;
+    bottom: 130px; /* Altura relativa al botón */
+    right: 20px; /* Alineado con el botón */
+    width: 300px; /* Más delgado */
+    height: 400px; /* Compacto */
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    border-radius: 10px;
+  }
+  
+  .modal__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal__iframe {
+    flex-grow: 1;
+    border: none;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .modal__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: #000;
+  }
+  .modal__link {
+    position: absolute;
+    bottom: -30px; /* Justo debajo del modal */
+    right: 250px; /* Alineado con el modal */
+    color: #cd5f2a;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+  
+  .modal__link:hover {
+    color: #a9a9a9;
+  }
+  
