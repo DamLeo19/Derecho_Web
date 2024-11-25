@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import '../styles/noticias.css';
+import '../styles/noticias_module.css'; // Importa el archivo de estilos
 
 function Noticias() {
     const [noticias, setNoticias] = useState([]);
@@ -28,7 +28,7 @@ function Noticias() {
             </div>
             <div className="cards-container dark:bg-white dark:text-black">
                 {noticias.map((noticia) => (
-                    <div className="card dark:bg-white dark:text-black" key={noticia._id}>
+                    <div className="cardN dark:bg-white dark:text-black" key={noticia._id}>
                         <h3>{noticia.nombre}</h3> {/* Nombre de la noticia */}
                         <p><strong>Fecha:</strong> {new Date(noticia.fecha).toLocaleDateString()}</p> {/* Fecha formateada */}
                         <p>{noticia.descripcion}</p> {/* Descripción */}

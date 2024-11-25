@@ -1,7 +1,7 @@
 import React from "react";
 import Card from "../components/CardDocentes.js";
 import { motion } from "framer-motion";
-import './Docentes.css'; // O el nuevo archivo CSS si creaste uno específico
+import './Docentes_module.css';
 
 const CentroEstudiantes = () => {
 

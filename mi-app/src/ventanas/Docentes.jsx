@@ -3,7 +3,7 @@
 import React from "react";
 import Card from "../components/CardDocentes.js";
 import { motion } from "framer-motion";
-import './Docentes.css';
+import './Docentes_module.css';
 
 const Docentes = () => {
 

@@ -14,7 +14,7 @@
   /**
    * TYPOGRAPHY
    */
-  --fontFamily-dm_sans: 'DM Sans', sans-serif;
+  --fontFamily-dm_sans: "DM Sans", sans-serif;
 
   /* font-size */
   --fontSize-headline-2: calc(1.3rem + 2.4vw);
@@ -44,7 +44,7 @@
 /* Banner */
 .banner {
   background-color: var(--gold-crayola);
-  background-image: url('https://st3.depositphotos.com/15822962/18400/v/600/depositphotos_184000596-stock-video-graphical-breacking-news-red-digital.jpg');
+  background-image: url("https://st3.depositphotos.com/15822962/18400/v/600/depositphotos_184000596-stock-video-graphical-breacking-news-red-digital.jpg");
   background-size: cover; /* La imagen cubre todo el banner */
   background-position: center; /* Centra la imagen */
   color: var(--white); /* Texto completamente blanco */
@@ -59,9 +59,8 @@
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); /* Resalta el texto */
 }
 
-
 .banner::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -81,26 +80,26 @@
 /* Contenedor de tarjetas */
 .cards-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); 
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px; /* Espacio entre las tarjetas */
   padding: var(--section-space);
   background-color: var(--eerie-black-1);
   justify-items: center; /* Centra las tarjetas en sus columnas */
 }
 
-.card {
-background-color: var(--smoky-black-3);
-color: var(--white);
-border-radius: var(--radius-24);
-padding: 40px; /* Aumenta el padding para mayor tamaño */
-width: 100%; /* Ancho automático */
-max-width: 800px; /* Aumenta el tamaño máximo */
-height: 420px; /* Fija una altura más grande */
-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-transition: transform var(--transition-1), box-shadow var(--transition-1);
-display: flex;
-flex-direction: column; /* Asegura alineación vertical */
-justify-content: space-between; /* Distribuye espacio vertical */
+.cardN {
+  background-color: var(--smoky-black-3);
+  color: var(--white);
+  border-radius: var(--radius-24);
+  padding: 40px; /* Aumenta el padding para mayor tamaño */
+  width: 100%; /* Ancho automático */
+  max-width: 500px; /* Aumenta el tamaño máximo */
+  height: 420px; /* Fija una altura más grande */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform var(--transition-1), box-shadow var(--transition-1);
+  display: flex;
+  flex-direction: column; /* Asegura alineación vertical */
+  justify-content: space-between; /* Distribuye espacio vertical */
 }
 
 .card:hover {
@@ -109,7 +108,7 @@ justify-content: space-between; /* Distribuye espacio vertical */
 }
 
 /* Títulos de las tarjetas */
-.card h3 {
+.cardN h3 {
   font-family: var(--fontFamily-dm_sans);
   font-size: var(--fontSize-title-2);
   margin-bottom: 10px;
@@ -117,32 +116,34 @@ justify-content: space-between; /* Distribuye espacio vertical */
   line-height: 1.2;
 }
 
-.card p {
-font-family: var(--fontFamily-dm_sans);
-font-size: var(--fontSize-body-3);
-line-height: var(--lineHeight-5);
-color: var(--quick-silver);
-overflow: visible; /* Permite que el texto exceda el contenedor */
-text-overflow: unset; /* No añade puntos suspensivos */
-display: block; /* Asegura que el elemento sea un bloque regular */
-height: auto; /* Ajusta la altura automáticamente según el contenido */
+.cardN p {
+  font-family: var(--fontFamily-dm_sans);
+  font-size: var(--fontSize-body-3);
+  line-height: var(--lineHeight-5);
+  color: var(--quick-silver);
+  overflow: visible; /* Permite que el texto exceda el contenedor */
+  text-overflow: unset; /* No añade puntos suspensivos */
+  display: block; /* Asegura que el elemento sea un bloque regular */
+  height: auto; /* Ajusta la altura automáticamente según el contenido */
 }
-
 
 @media (max-width: 1024px) {
   .cards-container {
-      grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas más pequeñas */
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /* 3 columnas en pantallas más pequeñas */
   }
 }
 
 @media (max-width: 768px) {
   .cards-container {
-      grid-template-columns: repeat(2, 1fr); /* 2 columnas en tabletas */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tabletas */
   }
 }
 
 @media (max-width: 480px) {
   .cards-container {
-      grid-template-columns: 1fr; /* 1 columna en teléfonos móviles */
+    grid-template-columns: 1fr; /* 1 columna en teléfonos móviles */
   }
 }
