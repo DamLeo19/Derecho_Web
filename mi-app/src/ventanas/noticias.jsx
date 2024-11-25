@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import '../styles/noticias.css'
+import '../styles/noticias.css';
 
 function Noticias() {
     const [noticias, setNoticias] = useState([]);
 
     useEffect(() => {
-        const fetchedNoticias = [
-            { id: 1, titulo: "Noticia 1", descripcion: "Descripción de la noticia " },
-            { id: 2, titulo: "Noticia 2", descripcion: "Descripción de la noticia " },
-            { id: 3, titulo: "Noticia 3", descripcion: "Descripción de la noticia " },
-            { id: 4, titulo: "Noticia 4", descripcion: "Descripción de la noticia " },
-            { id: 5, titulo: "Noticia 5", descripcion: "Descripción de la noticia " },
-            { id: 6, titulo: "Noticia 6", descripcion: "Descripción de la noticia " },
-            { id: 7, titulo: "Noticia 7", descripcion: "Descripción de la noticia " },
-            { id: 8, titulo: "Noticia 8", descripcion: "Descripción de la noticia " },
-            { id: 9, titulo: "Noticia 9", descripcion: "Descripción de la noticia " },
-            { id: 10, titulo: "Noticia 10", descripcion: "Descripción de la noticia" },
+        const fetchNoticias = async () => {
+            try {
+                const response = await fetch('http://localhost:5000/api/noticias'); // URL de tu backend
+                if (!response.ok) {
+                    throw new Error('Error al obtener noticias');
+                }
+                const data = await response.json();
+                setNoticias(data); // Actualiza el estado con las noticias del backend
+            } catch (error) {
+                console.error("Error al obtener noticias:", error);
+            }
+        };
 
-        ];
-        setNoticias(fetchedNoticias);
+        fetchNoticias();
     }, []);
 
     return (
@@ -26,11 +26,12 @@ function Noticias() {
             <div className="banner">
                 <span className="banner-text">Sección de Noticias</span>
             </div>
-            <div className="cards-container dark:bg-white dark:text-black">
+            <div className="cards-container">
                 {noticias.map((noticia) => (
-                    <div className="card" key={noticia.id}>
-                        <h3>{noticia.titulo}</h3>
-                        <p>{noticia.descripcion}</p>
+                    <div className="card" key={noticia._id}>
+                        <h3>{noticia.nombre}</h3> {/* Nombre de la noticia */}
+                        <p><strong>Fecha:</strong> {new Date(noticia.fecha).toLocaleDateString()}</p> {/* Fecha formateada */}
+                        <p>{noticia.descripcion}</p> {/* Descripción */}
                     </div>
                 ))}
             </div>
