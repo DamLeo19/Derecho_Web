@@ -20,6 +20,24 @@ exports.register = async (req, res) => {
         res.status(400).json({ error: 'Error al registrar usuario', details: error });
     }
 };
+//registro admin
+exports.registeradm = async (req, res) => {
+    const { nombre, correo, password, admin } = req.body;
+
+    try {
+        const existingUser = await User.findOne({ correo });
+        if (existingUser) {
+            return res.status(400).json({ error: 'Esta cuenta ya existe' });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUser = new User({ nombre, correo, password: hashedPassword, admin: true });
+        await newUser.save();
+        res.status(201).json({ message: 'Usuario registrado exitosamente' });
+    } catch (error) {
+        res.status(400).json({ error: 'Error al registrar usuario', details: error });
+    }
+};
 
 // Inicio de sesión
 exports.login = async (req, res) => {

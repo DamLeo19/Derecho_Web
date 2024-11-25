@@ -1,9 +1,12 @@
 const express = require('express');
-const { register, login, getUsers, deleteUser } = require('../controllers/userController');
+const { register, registeradm, login, getUsers, deleteUser } = require('../controllers/userController');
 const router = express.Router();
 
 // Ruta para registrar usuario
 router.post('/register', register);
+
+// Ruta para registrar usuario admin
+router.post('/registeradm', registeradm);
 
 // Ruta para iniciar sesión
 router.post('/login', login);
