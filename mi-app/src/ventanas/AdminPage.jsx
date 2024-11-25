@@ -8,7 +8,7 @@ const AdminPage = () => {
     fecha: '',
     descripcion: '',
   });
-
+  const [editingId, setEditingId] = useState(null); // Guarda el ID de la noticia que se está editando
   const [users, setUsers] = useState([]); // Para los usuarios
   const [noticias, setNoticias] = useState([]); // Para las noticias
 
@@ -19,17 +19,36 @@ const AdminPage = () => {
   };
 
   // Agregar noticia
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
+  // Agregar o actualizar noticia
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    if (editingId) {
+      // Editar noticia existente
+      await axios.put(`http://localhost:5000/api/noticias/${editingId}`, form);
+      alert('Noticia actualizada exitosamente');
+      setEditingId(null); // Reinicia el modo de edición
+    } else {
+      // Agregar nueva noticia
       await axios.post('http://localhost:5000/api/noticias', form);
       alert('Noticia agregada exitosamente');
-      setForm({ nombre: '', fecha: '', descripcion: '' }); // Resetea el formulario
-      fetchNoticias(); // Refresca las noticias
-    } catch (error) {
-      alert('Error al agregar la noticia: ' + (error.response?.data?.error || error.message));
     }
-  };
+    setForm({ nombre: '', fecha: '', descripcion: '' }); // Resetea el formulario
+    fetchNoticias(); // Refresca las noticias
+
+    // Scroll automático hacia la tabla de noticias
+    const noticiasSection = document.querySelector('.admin-table'); // Selecciona la tabla
+    if (noticiasSection) {
+      noticiasSection.scrollIntoView({
+        behavior: 'smooth', // Desplazamiento suave
+        block: 'start', // Alinea la tabla al inicio del viewport
+      });
+    }
+  } catch (error) {
+    alert('Error al procesar la noticia: ' + error.message);
+  }
+};
+
 
   // Cargar usuarios
   const fetchUsers = async () => {
@@ -63,14 +82,21 @@ const AdminPage = () => {
   };
 
   // Editar noticia
-  const handleEditNoticia = async (noticiaId) => {
-    const noticia = noticias.find(n => n._id === noticiaId);
-    setForm({
-      nombre: noticia.nombre,
-      fecha: noticia.fecha.slice(0, 10),  // Asegúrate de convertir la fecha a formato yyyy-MM-dd
-      descripcion: noticia.descripcion,
-    });
-  };
+const handleEditNoticia = (noticiaId) => {
+  const noticia = noticias.find((n) => n._id === noticiaId);
+  setForm({
+    nombre: noticia.nombre,
+    fecha: noticia.fecha.slice(0, 10), // Convertir fecha a formato yyyy-MM-dd
+    descripcion: noticia.descripcion,
+  });
+  setEditingId(noticiaId); // Establecer el ID de la noticia en edición
+
+  // Scroll automático hacia la parte superior
+  window.scrollTo({
+    top: 0, // Posición en píxeles desde la parte superior
+    behavior: 'smooth', // Transición suave
+  });
+};
 
   // Eliminar noticia
   const handleDeleteNoticia = async (noticiaId) => {
@@ -96,6 +122,8 @@ const AdminPage = () => {
 
       {/* Formulario para Noticias */}
       <form onSubmit={handleSubmit} className='admin-form'>
+      <h2>{editingId ? 'Editar Noticia' : 'Agregar Noticia'}</h2>
+
         <div className='form-group'>
           <label htmlFor='nombre'>Nombre de la Noticia</label>
           <input
@@ -129,11 +157,11 @@ const AdminPage = () => {
             required
           ></textarea>
         </div>
-        <button type='submit'>Agregar Noticia</button>
+        <button type='submit'>{editingId ? 'Actualizar' : 'Agregar'}</button>
       </form>
 
       {/* Tabla de Usuarios */}
-      <h2>Administrar Usuarios</h2>
+      <h1 className='admin-title'>Administrar Usuarios</h1>
       <table className='admin-table'>
         <thead>
           <tr>
@@ -156,7 +184,7 @@ const AdminPage = () => {
       </table>
 
       {/* Tabla de Noticias */}
-      <h2>Administrar Noticias</h2>
+      <h1 className='admin-title'>Administrar Noticias</h1>
       <table className='admin-table'>
         <thead>
           <tr>

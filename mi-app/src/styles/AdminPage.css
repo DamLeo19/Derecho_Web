@@ -185,3 +185,12 @@
 .admin-table td button:hover {
   background-color: var(--davys-grey);
 }
+
+.admin-title{
+  color: var(--black);
+  font-size: var(--fontSize-title-2);
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  transition: var(--transition-1);
+}

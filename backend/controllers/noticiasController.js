@@ -22,6 +22,23 @@ exports.getNoticias = async (req, res) => {
   }
 };
 
+// Actualizar una noticia
+exports.updateNoticia = async (req, res) => {
+  const { id } = req.params;
+  const { nombre, fecha, descripcion } = req.body;
+  try {
+    const updatedNoticia = await Noticia.findByIdAndUpdate(
+      id,
+      { nombre, fecha, descripcion },
+      { new: true, runValidators: true }
+    );
+    if (!updatedNoticia) return res.status(404).json({ error: 'Noticia no encontrada' });
+    res.json({ message: 'Noticia actualizada exitosamente', noticia: updatedNoticia });
+  } catch (error) {
+    res.status(400).json({ error: 'Error al actualizar la noticia', details: error });
+  }
+};
+
 // Eliminar una noticia
 exports.deleteNoticia = async (req, res) => {
   const { id } = req.params;
