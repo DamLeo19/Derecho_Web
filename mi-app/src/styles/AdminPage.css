@@ -1,28 +1,87 @@
+:root {
+  /**
+   * COLORS
+   */
+  --gold-crayola: #cd5f2a;
+  --quick-silver: hsla(0, 0%, 65%, 1);
+  --davys-grey: hsla(30, 3%, 34%, 1);
+  --smoky-black-1: hsla(40, 12%, 5%, 1);
+  --smoky-black-3: hsla(0, 3%, 7%, 1);
+  --eerie-black-1: hsla(210, 4%, 9%, 1);
+  --white: hsla(0, 0%, 100%, 1);
+  --black: hsla(0, 0%, 0%, 1);
+
+  /**
+   * TYPOGRAPHY
+   */
+  --fontFamily-dm_sans: 'DM Sans', sans-serif;
+
+  /* font-size */
+  --fontSize-headline-2: calc(1.3rem + 2.4vw);
+  --fontSize-title-2: 2.2rem;
+  --fontSize-body-3: 1.8rem;
+  --fontSize-label-1: 1.4rem;
+
+  /* line-height */
+  --lineHeight-5: 1.85em;
+
+  /**
+   * SPACING
+   */
+  --section-space: 70px;
+
+  /**
+   * BORDER RADIUS
+   */
+  --radius-24: 24px;
+
+  /**
+   * TRANSITION
+   */
+  --transition-1: 250ms ease;
+}
+
 /* Fondo blanco general para toda la página */
 .body-admin {
-  background-color: rgb(245, 235, 235);
+  background-color: var(--dark);
   margin: 0;
-  font-family: Arial, sans-serif;
-  color: #333; /* Asegura que el texto sea de color oscuro */
+  font-family: var(--fontFamily-dm_sans);
+  color: var(--smoky-black-1);
+  transition: var(--transition-1);
+}
+
+.body-admin.dark {
+  background-color: var(--smoky-black-1);
+  color: var(--white);
 }
 
 /* Estilo principal para el contenedor */
 .admin-container {
   max-width: 600px;
-  margin: 50px auto; /* Espaciado superior de 50px y centrado horizontal */
+  margin: 50px auto;
   padding: 20px;
-  background-color: white; /* Fondo blanco */
-  border-radius: 8px; /* Bordes redondeados */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+  background-color: var(--white);
+  border-radius: var(--radius-24);
+  box-shadow: 0 4px 8px rgba(89, 30, 1, 0.8);
+  transition: var(--transition-1);
+}
+
+.admin-container.dark {
+  background-color: var(--eerie-black-1);
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 /* Título */
 .admin-title {
   text-align: center;
   margin-bottom: 20px;
-  color: #333; /* Texto oscuro */
-  font-size: 1.8rem;
+  color: var(--smoky-black-1);
+  font-size: var(--fontSize-headline-2);
   font-weight: bold;
+}
+
+.admin-title.dark {
+  color: var(--white);
 }
 
 /* Estilo del formulario */
@@ -34,37 +93,51 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #333; /* Color oscuro para las etiquetas */
+  color: var(--davys-grey);
+  font-size: var(--fontSize-label-1);
+}
+
+.admin-form label.dark {
+  color: var(--quick-silver);
 }
 
 .admin-form input,
 .admin-form textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc; /* Borde gris claro */
-  border-radius: 5px;
-  font-size: 1.4rem;
-  color: #333; /* Asegura que el texto dentro de los campos sea oscuro */
+  border: 1px solid var(--quick-silver);
+  border-radius: var(--radius-24);
+  font-size: var(--fontSize-body-3);
+  color: var(--smoky-black-1);
+  background-color: var(--white);
+  transition: var(--transition-1);
+}
+
+.admin-form input.dark,
+.admin-form textarea.dark {
+  color: var(--white);
+  background-color: var(--eerie-black-1);
 }
 
 .admin-form textarea {
-  resize: none; /* Evita el redimensionamiento manual */
+  resize: none;
 }
 
 /* Estilo del botón */
 .admin-form button {
   width: 100%;
   padding: 10px;
-  font-size: 1.5rem;
-  color: white;
-  background-color: #007bff; /* Color azul del botón */
+  font-size: var(--fontSize-title-2);
+  color: var(--white);
+  background-color: var(--gold-crayola);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-24);
   cursor: pointer;
+  transition: var(--transition-1);
 }
 
 .admin-form button:hover {
-  background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+  background-color: var(--davys-grey);
 }
 
 /* Estilo para las tablas */
@@ -76,26 +149,39 @@
 
 .admin-table th,
 .admin-table td {
-  border: 1px solid #ccc;
+  border: 1px solid var(--quick-silver);
   padding: 8px;
   text-align: left;
 }
 
 .admin-table th {
-  background-color: #f2f2f2;
+  background-color: var(--quick-silver);
   font-weight: bold;
+}
+
+.admin-table td {
+  color: var(--smoky-black-1);
+}
+
+.admin-table th.dark {
+  background-color: var(--smoky-black-3);
+}
+
+.admin-table td.dark {
+  color: var(--white);
 }
 
 .admin-table td button {
   padding: 5px 10px;
   margin: 0 5px;
-  background-color: #dc3545;
-  color: white;
+  background-color: var(--gold-crayola);
+  color: var(--white);
   border: none;
-  border-radius: 5px;
+  border-radius: var(--radius-24);
   cursor: pointer;
+  transition: var(--transition-1);
 }
 
 .admin-table td button:hover {
-  background-color: #c82333;
+  background-color: var(--davys-grey);
 }

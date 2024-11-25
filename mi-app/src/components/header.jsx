@@ -102,12 +102,7 @@ function Header({ theme, setTheme }) {
                 Centro de Estudiantes
               </NavLink>
             </li>
-            <li className="navbar-item">
-              <a href="#contactos" className="navbar-link hover-underline">
-                <div className="separator"></div>
-                <span className="span">Noticias</span>
-              </a>
-            </li>
+            
             <li className="navbar-item">
               <NavLink
                 to="/register"

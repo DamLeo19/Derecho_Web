@@ -26,7 +26,7 @@ function Noticias() {
             <div className="banner">
                 <span className="banner-text">Sección de Noticias</span>
             </div>
-            <div className="cards-container">
+            <div className="cards-container dark:bg-white dark:text-black">
                 {noticias.map((noticia) => (
                     <div className="card" key={noticia.id}>
                         <h3>{noticia.titulo}</h3>
