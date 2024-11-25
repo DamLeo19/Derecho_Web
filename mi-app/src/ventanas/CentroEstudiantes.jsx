@@ -34,14 +34,14 @@ const CentroEstudiantes = () => {
   ];
 
   return (
-    <div className="main-container dark:bg-white dark:text-black">
+    <div className="main-container dark:bg-dark dark:text-black">
       <div className="centro-estudiantes-banner">
         <div className="centro-estudiantes-overlay">
           <h1 className="centro-estudiantes-title">Centro de Estudiantes</h1>
         </div>
       </div>
       <motion.div
-        className="descripcion-centro bg-white dark:text-black"
+        className="descripcion-centro dark:bg-white dark:text-black"
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}

@@ -46,7 +46,7 @@ const NuevaPagina = () => {
       </div>
       <main className="contenido">
         <h1 className="titulo-principal">
-          La carrera de derecho tiene los siguientes enorgullecentes logros para la universidad!!
+          ¡La carrera de derecho tiene los siguientes enorgullecentes logros para la universidad!
         </h1>
         <section className="logros">
           <div className="tarjetas">
