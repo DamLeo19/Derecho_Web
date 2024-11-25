@@ -167,6 +167,7 @@ const handleEditNoticia = (noticiaId) => {
           <tr>
             <th>Nombre</th>
             <th>Correo</th>
+            <th>Rol</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -175,6 +176,7 @@ const handleEditNoticia = (noticiaId) => {
             <tr key={user._id}>
               <td>{user.nombre}</td>
               <td>{user.correo}</td>
+              <td>{user.admin ? 'Administrador' : 'Usuario'}</td>
               <td>
                 <button onClick={() => handleDeleteUser(user._id)}>Eliminar</button>
               </td>
