@@ -4,6 +4,73 @@ import '../styles/AdminPage.css';
 
 const AdminPage = () => {
   // Estados para Noticias
+  // Docentes
+  const [formData, setFormData] = useState({
+    nombre: "",
+    cargo: "",
+    descripcion: "",
+    correo: "",
+    redes: "",
+  });
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
+
+  const handleChangeDocentes = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      setImage(file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        setPreview(reader.result); // Mostrar previsualización de la imagen
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleSubmitDocentes = async (e) => {
+    e.preventDefault();
+    const data = new FormData();
+    data.append("nombre", formData.nombre);
+    data.append("cargo", formData.cargo);
+    data.append("descripcion", formData.descripcion);
+    data.append("correo", formData.correo);
+    data.append("redes", formData.redes);
+    data.append("image", image);
+
+    try {
+      const response = await fetch("http://localhost:5000/api/docentes", {
+        method: "POST",
+        body: data,
+      });
+
+      if (!response.ok) {
+        throw new Error("Error al enviar el formulario");
+      }
+
+      alert("Docente agregado exitosamente");
+      setFormData({
+        nombre: "",
+        cargo: "",
+        descripcion: "",
+        correo: "",
+        redes: "",
+      });
+      setImage(null);
+      setPreview(null);
+    } catch (error) {
+      console.error(error);
+      alert("Hubo un error al agregar el docente.");
+    }
+  };
+
   const [form, setForm] = useState({
     nombre: '',
     fecha: '',
@@ -391,6 +458,111 @@ const AdminPage = () => {
           </div>
           <button type="submit">Agregar Acreditación</button>
         </form>
+        {/* Seccion para agregar docentes */}
+        <div className="admin-form">
+          <h2 className='admin-title'>Agregar Docente</h2>
+          <form onSubmit={handleSubmitDocentes} className="docente-form">
+            <label>
+              Nombre:
+              <input
+                type="text"
+                name="nombre"
+                value={formData.nombre}
+                onChange={handleChangeDocentes}
+                required
+              />
+            </label>
+            <label>
+              Cargo:
+              <select name="cargo" value={formData.cargo} onChange={handleChangeDocentes} required>
+                <option value="">Seleccionar</option>
+                <option value="Director de carrera">Director de carrera</option>
+                <option value="Tiempo completo">Tiempo completo</option>
+                <option value="Medio tiempo">Medio tiempo</option>
+              </select>
+            </label>
+            <label>
+              Descripción:
+              <textarea
+                name="descripcion"
+                value={formData.descripcion}
+                onChange={handleChangeDocentes}
+                required
+              />
+            </label>
+            <label>
+              Correo:
+              <input
+                type="email"
+                name="correo"
+                value={formData.correo}
+                onChange={handleChangeDocentes}
+                required
+              />
+            </label>
+            <label>
+              Redes Sociales:
+              <input
+                type="text"
+                name="redes"
+                value={formData.redes}
+                onChange={handleChangeDocentes}
+                placeholder="Enlace(s) separados por comas"
+              />
+            </label>
+            <label>
+              Imagen:
+              <input type="file" accept="image/*" onChange={handleImageChange} />
+            </label>
+            {preview && (
+              <div className="image-preview">
+                <img src={preview} alt="Previsualización" />
+              </div>
+            )}
+            <button type="submit">Agregar Docente</button>
+          </form>
+        </div>
+        <div>
+          <h1 className='admin-title'>Agregar Acreditaciones</h1>
+          <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
+            <div className='form-group'>
+              <label htmlFor="nombre">Nombre</label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                value={acreditacionForm.nombre}
+                onChange={handleAcreditacionChange}
+                required
+              />
+            </div>
+            <div className='form-group'>
+              <label htmlFor="imagen">Imagen</label>
+              <input
+                type="file"
+                id="imagen"
+                name="imagen"
+                accept="image/*"
+                onChange={handleAcreditacionChange}
+                required
+              />
+            </div>
+            <button type="submit">Agregar Acreditación</button>
+          </form>
+
+          <h1 className='admin-title'>Acreditaciones Existentes</h1>
+          <ul className='acreditaciones-list'>
+            {acreditaciones.map((acreditacion) => (
+              <li key={acreditacion._id} className='acreditacion-item'>
+                <p className='titeacre'>{acreditacion.nombre}</p>
+                <img src={acreditacion.imagen} alt={acreditacion.nombre} className='acreditacion-image' />
+                <button onClick={() => handleDeleteAcreditacion(acreditacion._id)} className="delete-button">
+                  Eliminar
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {/* Lista de Acreditaciones */}
         <h1 className='admin-title'>Acreditaciones Existentes</h1>
