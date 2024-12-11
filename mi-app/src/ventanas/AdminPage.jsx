@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 import '../styles/AdminPage.css'; // Asegúrate de tener el archivo CSS correctamente vinculado
 
 const AdminPage = () => {
@@ -46,11 +47,11 @@ const AdminPage = () => {
     try {
       if (editingId) {
         await axios.put(`http://localhost:5000/api/noticias/${editingId}`, form);
-        alert('Noticia actualizada exitosamente');
+        Swal.fire('¡Éxito!', 'Noticia actualizada exitosamente', 'success');
         setEditingId(null);
       } else {
         await axios.post('http://localhost:5000/api/noticias', form);
-        alert('Noticia agregada exitosamente');
+        Swal.fire('¡Éxito!', 'Noticia agregada exitosamente', 'success');
       }
       setForm({ nombre: '', fecha: '', descripcion: '' });
       fetchNoticias();
@@ -62,7 +63,7 @@ const AdminPage = () => {
         });
       }
     } catch (error) {
-      alert('Error al procesar la noticia: ' + error.message);
+      Swal.fire('¡Error!', 'Error al procesar la noticia: ' + error.message, 'error');
     }
   };
 
@@ -71,11 +72,11 @@ const AdminPage = () => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:5000/api/users/registeradm', userForm);
-      alert('Usuario agregado exitosamente');
+      Swal.fire('¡Éxito!', 'Usuario agregado exitosamente', 'success');
       setUserForm({ nombre: '', correo: '', password: '', admin: true });
       fetchUsers();
     } catch (error) {
-      alert('Error al agregar usuario: ' + error.message);
+      Swal.fire('¡Error!', 'Error al agregar usuario: ' + error.message, 'error');
     }
   };
 
@@ -85,7 +86,7 @@ const AdminPage = () => {
       const response = await axios.get('http://localhost:5000/api/users');
       setUsers(response.data);
     } catch (error) {
-      alert('Error al obtener usuarios: ' + error.message);
+      Swal.fire('¡Error!', 'Error al obtener usuarios: ' + error.message, 'error');
     }
   };
 
@@ -93,10 +94,10 @@ const AdminPage = () => {
   const handleDeleteUser = async (userId) => {
     try {
       await axios.delete(`http://localhost:5000/api/users/${userId}`);
-      alert('Usuario eliminado');
+      Swal.fire('¡Éxito!', 'Usuario eliminado', 'success');
       fetchUsers();
     } catch (error) {
-      alert('Error al eliminar el usuario: ' + error.message);
+      Swal.fire('¡Error!', 'Error al eliminar el usuario: ' + error.message, 'error');
     }
   };
 
@@ -106,7 +107,7 @@ const AdminPage = () => {
       const response = await axios.get('http://localhost:5000/api/noticias');
       setNoticias(response.data);
     } catch (error) {
-      alert('Error al obtener noticias: ' + error.message);
+      Swal.fire('¡Error!', 'Error al obtener noticias: ' + error.message, 'error');
     }
   };
 
@@ -129,10 +130,10 @@ const AdminPage = () => {
   const handleDeleteNoticia = async (noticiaId) => {
     try {
       await axios.delete(`http://localhost:5000/api/noticias/${noticiaId}`);
-      alert('Noticia eliminada');
+      Swal.fire('¡Éxito!', 'Noticia eliminada', 'success');
       fetchNoticias();
     } catch (error) {
-      alert('Error al eliminar la noticia: ' + error.message);
+      Swal.fire('¡Error!', 'Error al eliminar la noticia: ' + error.message, 'error');
     }
   };
 
@@ -155,11 +156,11 @@ const AdminPage = () => {
     e.preventDefault();
     try {
       await axios.post('http://localhost:5000/api/acreditaciones', acreditacionForm);
-      alert('Acreditación agregada exitosamente');
+      Swal.fire('¡Éxito!', 'Acreditación agregada exitosamente', 'success');
       setAcreditacionForm({ nombre: '', imagen: '' });
       fetchAcreditaciones();
     } catch (error) {
-      alert('Error al agregar acreditación: ' + error.message);
+      Swal.fire('¡Error!', 'Error al agregar acreditación: ' + error.message, 'error');
     }
   };
 
@@ -169,26 +170,25 @@ const AdminPage = () => {
       const response = await axios.get('http://localhost:5000/api/acreditaciones');
       setAcreditaciones(response.data);
     } catch (error) {
-      alert('Error al obtener acreditaciones: ' + error.message);
+      Swal.fire('¡Error!', 'Error al obtener acreditaciones: ' + error.message, 'error');
     }
   };
-// Eliminar acreditación
-const handleDeleteAcreditacion = async (acreditacionId) => {
-  try {
-    await axios.delete(`http://localhost:5000/api/acreditaciones/${acreditacionId}`);
-    alert('Acreditación eliminada');
-    fetchAcreditaciones(); // Actualizar la lista después de eliminar
-  } catch (error) {
-    alert('Error al eliminar la acreditación: ' + error.message);
-  }
-};
 
+  // Eliminar acreditación
+  const handleDeleteAcreditacion = async (acreditacionId) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/acreditaciones/${acreditacionId}`);
+      Swal.fire('¡Éxito!', 'Acreditación eliminada', 'success');
+      fetchAcreditaciones(); // Actualizar la lista después de eliminar
+    } catch (error) {
+      Swal.fire('¡Error!', 'Error al eliminar la acreditación: ' + error.message, 'error');
+    }
+  };
 
   useEffect(() => {
     fetchUsers();
     fetchNoticias();
     fetchAcreditaciones(); // Asegúrate de llamar esta función aquí
-
   }, []);
 
   return (
@@ -335,7 +335,7 @@ const handleDeleteAcreditacion = async (acreditacionId) => {
                 <td>{user.correo}</td>
                 <td>{user.admin ? 'Administrador' : 'Usuario'}</td>
                 <td>
-                  <button onClick={() => handleDeleteUser(user._id)}>Eliminar</button>
+                  <button onClick={() => handleDeleteUser(user._id)} className="delete-button">Eliminar</button>
                 </td>
               </tr>
             ))}
@@ -357,20 +357,19 @@ const handleDeleteAcreditacion = async (acreditacionId) => {
             {noticias.map(noticia => (
               <tr key={noticia._id}>
                 <td>{noticia.nombre}</td>
-                <td>{noticia.fecha}</td>
+                <td>{noticia.fecha.slice(0, 10)}</td>
                 <td>{noticia.descripcion}</td>
                 <td>
-                  <button onClick={() => handleEditNoticia(noticia._id)}>Editar</button>
-                  <button onClick={() => handleDeleteNoticia(noticia._id)}>Eliminar</button>
+                  <button onClick={() => handleEditNoticia(noticia._id)} className="edit-button">Editar</button>
+                  <button onClick={() => handleDeleteNoticia(noticia._id)} className="delete-button">Eliminar</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
     </body>
   );
-};
+}
 
 export default AdminPage;
