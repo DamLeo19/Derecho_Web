@@ -3,8 +3,43 @@ import axios from 'axios';
 import '../styles/AdminPage.css';
 
 const AdminPage = () => {
-  // Estados para Noticias
-  // Docentes
+  // -------------------- Estados y lógica para Noticias --------------------
+  const [form, setForm] = useState({
+    nombre: '',
+    fecha: '',
+    descripcion: '',
+  });
+  const [editingId, setEditingId] = useState(null); // ID noticia en edición
+  const [noticias, setNoticias] = useState([]); // Lista de noticias
+
+  // -------------------- Estados y lógica para Usuarios --------------------
+  const [users, setUsers] = useState([]); 
+  const [userForm, setUserForm] = useState({
+    nombre: '',
+    correo: '',
+    password: '',
+    admin: true,
+  });
+
+  // -------------------- Estados y lógica para Acreditaciones --------------------
+  const [acreditaciones, setAcreditaciones] = useState([]);
+  const [acreditacionForm, setAcreditacionForm] = useState({
+    nombre: '',
+    imagen: '',
+  });
+
+  // -------------------- Estados y lógica para Materias --------------------
+  const [materias, setMaterias] = useState([]);
+  const [materiaForm, setMateriaForm] = useState({
+    codigo: '',
+    nombre: '',
+    semestre: 1,
+    req: '',
+    habilita: ''
+  });
+  const [editingMateriaId, setEditingMateriaId] = useState(null);
+
+  // -------------------- Estados y lógica para Docentes (amigo) --------------------
   const [formData, setFormData] = useState({
     nombre: "",
     cargo: "",
@@ -29,7 +64,7 @@ const AdminPage = () => {
       setImage(file);
       const reader = new FileReader();
       reader.onload = () => {
-        setPreview(reader.result); // Mostrar previsualización de la imagen
+        setPreview(reader.result); // Previsualización de la imagen
       };
       reader.readAsDataURL(file);
     }
@@ -71,48 +106,14 @@ const AdminPage = () => {
     }
   };
 
-  const [form, setForm] = useState({
-    nombre: '',
-    fecha: '',
-    descripcion: '',
-  });
-  const [editingId, setEditingId] = useState(null); // ID noticia en edición
-  const [noticias, setNoticias] = useState([]); // Lista de noticias
-
-  // Estados para Usuarios
-  const [users, setUsers] = useState([]); 
-  const [userForm, setUserForm] = useState({
-    nombre: '',
-    correo: '',
-    password: '',
-    admin: true,
-  });
-
-  // Estados para Acreditaciones
-  const [acreditaciones, setAcreditaciones] = useState([]);
-  const [acreditacionForm, setAcreditacionForm] = useState({
-    nombre: '',
-    imagen: '',
-  });
-
-  // Estados para Materias
-  const [materias, setMaterias] = useState([]);
-  const [materiaForm, setMateriaForm] = useState({
-    codigo: '',
-    nombre: '',
-    semestre: 1,
-    req: '',
-    habilita: ''
-  });
-  const [editingMateriaId, setEditingMateriaId] = useState(null);
-
-  // Manejo de cambios en formulario de Noticias
+  // -------------------- Handlers generales --------------------
+  // Maneja los cambios en el formulario de Noticias
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  // Manejo de cambios en formulario de Usuarios
+  // Maneja los cambios en el formulario de Usuarios
   const handleUserChange = (e) => {
     const { name, value, type, checked } = e.target;
     setUserForm({
@@ -217,7 +218,7 @@ const AdminPage = () => {
     }
   };
 
-  // Manejo de cambios en formulario de Acreditaciones
+  // Maneja los cambios en el formulario de Acreditaciones
   const handleAcreditacionChange = (e) => {
     const { name, value, files } = e.target;
     if (name === 'imagen' && files && files[0]) {
@@ -431,34 +432,7 @@ const AdminPage = () => {
           <button type='submit'>Agregar Usuario</button>
         </form>
 
-        {/* Formulario para Acreditaciones */}
-        <h1 className='admin-title'>Agregar Acreditaciones</h1>
-        <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
-          <div className='form-group'>
-            <label htmlFor="nombre">Nombre</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              value={acreditacionForm.nombre}
-              onChange={handleAcreditacionChange}
-              required
-            />
-          </div>
-          <div className='form-group'>
-            <label htmlFor="imagen">Imagen</label>
-            <input
-              type="file"
-              id="imagen"
-              name="imagen"
-              accept="image/*"
-              onChange={handleAcreditacionChange}
-              required
-            />
-          </div>
-          <button type="submit">Agregar Acreditación</button>
-        </form>
-        {/* Seccion para agregar docentes */}
+        {/* Formulario para Docentes */}
         <div className="admin-form">
           <h2 className='admin-title'>Agregar Docente</h2>
           <form onSubmit={handleSubmitDocentes} className="docente-form">
@@ -522,47 +496,34 @@ const AdminPage = () => {
             <button type="submit">Agregar Docente</button>
           </form>
         </div>
-        <div>
-          <h1 className='admin-title'>Agregar Acreditaciones</h1>
-          <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
-            <div className='form-group'>
-              <label htmlFor="nombre">Nombre</label>
-              <input
-                type="text"
-                id="nombre"
-                name="nombre"
-                value={acreditacionForm.nombre}
-                onChange={handleAcreditacionChange}
-                required
-              />
-            </div>
-            <div className='form-group'>
-              <label htmlFor="imagen">Imagen</label>
-              <input
-                type="file"
-                id="imagen"
-                name="imagen"
-                accept="image/*"
-                onChange={handleAcreditacionChange}
-                required
-              />
-            </div>
-            <button type="submit">Agregar Acreditación</button>
-          </form>
 
-          <h1 className='admin-title'>Acreditaciones Existentes</h1>
-          <ul className='acreditaciones-list'>
-            {acreditaciones.map((acreditacion) => (
-              <li key={acreditacion._id} className='acreditacion-item'>
-                <p className='titeacre'>{acreditacion.nombre}</p>
-                <img src={acreditacion.imagen} alt={acreditacion.nombre} className='acreditacion-image' />
-                <button onClick={() => handleDeleteAcreditacion(acreditacion._id)} className="delete-button">
-                  Eliminar
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {/* Formulario para Acreditaciones */}
+        <h1 className='admin-title'>Agregar Acreditaciones</h1>
+        <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
+          <div className='form-group'>
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              value={acreditacionForm.nombre}
+              onChange={handleAcreditacionChange}
+              required
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor="imagen">Imagen</label>
+            <input
+              type="file"
+              id="imagen"
+              name="imagen"
+              accept="image/*"
+              onChange={handleAcreditacionChange}
+              required
+            />
+          </div>
+          <button type="submit">Agregar Acreditación</button>
+        </form>
 
         {/* Lista de Acreditaciones */}
         <h1 className='admin-title'>Acreditaciones Existentes</h1>
@@ -592,7 +553,6 @@ const AdminPage = () => {
               required
             />
           </div>
-
           <div className='form-group'>
             <label htmlFor='nombre'>Nombre de la Materia</label>
             <input
@@ -604,7 +564,6 @@ const AdminPage = () => {
               required
             />
           </div>
-
           <div className='form-group'>
             <label htmlFor='semestre'>Semestre</label>
             <input
@@ -616,7 +575,6 @@ const AdminPage = () => {
               required
             />
           </div>
-
           <div className='form-group'>
             <label htmlFor='req'>Requisitos (separados por coma)</label>
             <input
@@ -627,7 +585,6 @@ const AdminPage = () => {
               onChange={handleMateriaChange}
             />
           </div>
-
           <div className='form-group'>
             <label htmlFor='habilita'>Habilita (separados por coma)</label>
             <input
@@ -638,7 +595,6 @@ const AdminPage = () => {
               onChange={handleMateriaChange}
             />
           </div>
-
           <button type='submit'>{editingMateriaId ? 'Actualizar Materia' : 'Agregar Materia'}</button>
         </form>
 
