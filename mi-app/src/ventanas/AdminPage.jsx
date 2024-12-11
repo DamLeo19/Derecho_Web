@@ -14,6 +14,13 @@ const AdminPage = () => {
     password: '',
     admin: true,
   });
+
+  const [acreditaciones, setAcreditaciones] = useState([]);
+  const [acreditacionForm, setAcreditacionForm] = useState({
+    nombre: '',
+    imagen: '',
+  });
+
   const [editingId, setEditingId] = useState(null); // Guarda el ID de la noticia que se está editando
   const [users, setUsers] = useState([]); // Para los usuarios
   const [noticias, setNoticias] = useState([]); // Para las noticias
@@ -129,9 +136,59 @@ const AdminPage = () => {
     }
   };
 
+  // Maneja los cambios en el formulario de acreditaciones
+  const handleAcreditacionChange = (e) => {
+    const { name, value, files } = e.target;
+    if (name === 'imagen' && files && files[0]) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAcreditacionForm({ ...acreditacionForm, imagen: reader.result });
+      };
+      reader.readAsDataURL(files[0]);
+    } else {
+      setAcreditacionForm({ ...acreditacionForm, [name]: value });
+    }
+  };
+
+  // Enviar acreditación al servidor
+  const handleAcreditacionSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/api/acreditaciones', acreditacionForm);
+      alert('Acreditación agregada exitosamente');
+      setAcreditacionForm({ nombre: '', imagen: '' });
+      fetchAcreditaciones();
+    } catch (error) {
+      alert('Error al agregar acreditación: ' + error.message);
+    }
+  };
+
+  // Cargar acreditaciones
+  const fetchAcreditaciones = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/acreditaciones');
+      setAcreditaciones(response.data);
+    } catch (error) {
+      alert('Error al obtener acreditaciones: ' + error.message);
+    }
+  };
+// Eliminar acreditación
+const handleDeleteAcreditacion = async (acreditacionId) => {
+  try {
+    await axios.delete(`http://localhost:5000/api/acreditaciones/${acreditacionId}`);
+    alert('Acreditación eliminada');
+    fetchAcreditaciones(); // Actualizar la lista después de eliminar
+  } catch (error) {
+    alert('Error al eliminar la acreditación: ' + error.message);
+  }
+};
+
+
   useEffect(() => {
     fetchUsers();
     fetchNoticias();
+    fetchAcreditaciones(); // Asegúrate de llamar esta función aquí
+
   }, []);
 
   return (
@@ -217,6 +274,48 @@ const AdminPage = () => {
           </div>
           <button type='submit'>Agregar Usuario</button>
         </form>
+        <div>
+  <h1 className='admin-title'>Agregar Acreditaciones</h1>
+    <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
+      <div className='form-group'>
+        <label htmlFor="nombre">Nombre</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          value={acreditacionForm.nombre}
+          onChange={handleAcreditacionChange}
+          required
+        />
+      </div>
+      <div className='form-group'>
+        <label htmlFor="imagen">Imagen</label>
+        <input
+          type="file"
+          id="imagen"
+          name="imagen"
+          accept="image/*"
+          onChange={handleAcreditacionChange}
+          required
+        />
+      </div>
+      <button type="submit">Agregar Acreditación</button>
+    </form>
+
+      <h1 className='admin-title'>Acreditaciones Existentes</h1>
+      <ul className='acreditaciones-list'>
+  {acreditaciones.map((acreditacion) => (
+    <li key={acreditacion._id} className='acreditacion-item'>
+      <p className='titeacre'>{acreditacion.nombre}</p>
+      <img src={acreditacion.imagen} alt={acreditacion.nombre} className='acreditacion-image' />
+      <button onClick={() => handleDeleteAcreditacion(acreditacion._id)} className="delete-button">
+        Eliminar
+      </button>
+    </li>
+  ))}
+</ul>
+</div>
+
 
         {/* Tabla de Usuarios */}
         <h1 className='admin-title'>Administrar Usuarios</h1>
@@ -269,6 +368,7 @@ const AdminPage = () => {
           </tbody>
         </table>
       </div>
+
     </body>
   );
 };
