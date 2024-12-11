@@ -103,15 +103,7 @@ function Header({ theme, setTheme }) {
               </NavLink>
             </li>
             
-            <li className="navbar-item">
-              <NavLink
-                to="/register"
-                className="navbar-link hover-underline"
-              >
-                <div className="separator"></div>
-                Registrarte
-              </NavLink>
-            </li>
+   
             <li className="navbar-item">
               <NavLink
                 to="/login"

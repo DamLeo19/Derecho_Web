@@ -51,8 +51,7 @@ const AccreditationSection = () => {
         <p className="section-subtitle label-2 dark:bg-white dark:text-black">RECONOCIMIENTOS</p>
         <h2 className="headline-1 section-title dark:bg-white dark:text-black">Tenemos las siguientes acreditaciones</h2>
         <p className="section-text dark:bg-white dark:text-black">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry lorem Ipsum has been the
-          industry's standard dummy text ever.
+          Acreditaciones de la carrera ofrecidas por
         </p>
         <Slider {...settings}>
           {acreditaciones.map((acreditacion, index) => (

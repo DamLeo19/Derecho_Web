@@ -915,7 +915,7 @@ body.nav-active { overflow: hidden; }
 .service .section-title { margin-block-end: 16px; }
 
 .service .section-text { margin-block-end: 40px; }
-
+.section-text { font-size: 1.15em; }
 .service-card { overflow: hidden; }
 
 .service-card .has-before {
