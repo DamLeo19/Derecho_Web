@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../styles/AdminPage.css'; // Asegúrate de tener el archivo CSS correctamente vinculado
+import '../styles/AdminPage.css';
 
 const AdminPage = () => {
+  // Estados para Noticias
   const [form, setForm] = useState({
     nombre: '',
     fecha: '',
     descripcion: '',
   });
+  const [editingId, setEditingId] = useState(null); // ID noticia en edición
+  const [noticias, setNoticias] = useState([]); // Lista de noticias
+
+  // Estados para Usuarios
+  const [users, setUsers] = useState([]); 
   const [userForm, setUserForm] = useState({
     nombre: '',
     correo: '',
@@ -15,23 +21,31 @@ const AdminPage = () => {
     admin: true,
   });
 
+  // Estados para Acreditaciones
   const [acreditaciones, setAcreditaciones] = useState([]);
   const [acreditacionForm, setAcreditacionForm] = useState({
     nombre: '',
     imagen: '',
   });
 
-  const [editingId, setEditingId] = useState(null); // Guarda el ID de la noticia que se está editando
-  const [users, setUsers] = useState([]); // Para los usuarios
-  const [noticias, setNoticias] = useState([]); // Para las noticias
+  // Estados para Materias
+  const [materias, setMaterias] = useState([]);
+  const [materiaForm, setMateriaForm] = useState({
+    codigo: '',
+    nombre: '',
+    semestre: 1,
+    req: '',
+    habilita: ''
+  });
+  const [editingMateriaId, setEditingMateriaId] = useState(null);
 
-  // Maneja los cambios en el formulario de noticias
+  // Manejo de cambios en formulario de Noticias
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  // Maneja los cambios en el formulario de usuarios
+  // Manejo de cambios en formulario de Usuarios
   const handleUserChange = (e) => {
     const { name, value, type, checked } = e.target;
     setUserForm({
@@ -40,7 +54,7 @@ const AdminPage = () => {
     });
   };
 
-  // Agregar noticia
+  // Agregar o Actualizar Noticia
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -66,7 +80,7 @@ const AdminPage = () => {
     }
   };
 
-  // Agregar usuario
+  // Agregar Usuario Admin
   const handleUserSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -79,7 +93,7 @@ const AdminPage = () => {
     }
   };
 
-  // Cargar usuarios
+  // Cargar Usuarios
   const fetchUsers = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/users');
@@ -89,7 +103,7 @@ const AdminPage = () => {
     }
   };
 
-  // Eliminar usuario
+  // Eliminar Usuario
   const handleDeleteUser = async (userId) => {
     try {
       await axios.delete(`http://localhost:5000/api/users/${userId}`);
@@ -100,7 +114,7 @@ const AdminPage = () => {
     }
   };
 
-  // Cargar noticias
+  // Cargar Noticias
   const fetchNoticias = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/noticias');
@@ -110,7 +124,7 @@ const AdminPage = () => {
     }
   };
 
-  // Editar noticia
+  // Editar Noticia
   const handleEditNoticia = (noticiaId) => {
     const noticia = noticias.find((n) => n._id === noticiaId);
     setForm({
@@ -125,7 +139,7 @@ const AdminPage = () => {
     });
   };
 
-  // Eliminar noticia
+  // Eliminar Noticia
   const handleDeleteNoticia = async (noticiaId) => {
     try {
       await axios.delete(`http://localhost:5000/api/noticias/${noticiaId}`);
@@ -136,7 +150,7 @@ const AdminPage = () => {
     }
   };
 
-  // Maneja los cambios en el formulario de acreditaciones
+  // Manejo de cambios en formulario de Acreditaciones
   const handleAcreditacionChange = (e) => {
     const { name, value, files } = e.target;
     if (name === 'imagen' && files && files[0]) {
@@ -150,7 +164,7 @@ const AdminPage = () => {
     }
   };
 
-  // Enviar acreditación al servidor
+  // Enviar Acreditación
   const handleAcreditacionSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -163,7 +177,7 @@ const AdminPage = () => {
     }
   };
 
-  // Cargar acreditaciones
+  // Cargar Acreditaciones
   const fetchAcreditaciones = async () => {
     try {
       const response = await axios.get('http://localhost:5000/api/acreditaciones');
@@ -172,32 +186,108 @@ const AdminPage = () => {
       alert('Error al obtener acreditaciones: ' + error.message);
     }
   };
-// Eliminar acreditación
-const handleDeleteAcreditacion = async (acreditacionId) => {
-  try {
-    await axios.delete(`http://localhost:5000/api/acreditaciones/${acreditacionId}`);
-    alert('Acreditación eliminada');
-    fetchAcreditaciones(); // Actualizar la lista después de eliminar
-  } catch (error) {
-    alert('Error al eliminar la acreditación: ' + error.message);
-  }
-};
 
+  // Eliminar Acreditación
+  const handleDeleteAcreditacion = async (acreditacionId) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/acreditaciones/${acreditacionId}`);
+      alert('Acreditación eliminada');
+      fetchAcreditaciones();
+    } catch (error) {
+      alert('Error al eliminar la acreditación: ' + error.message);
+    }
+  };
 
+  // Manejo de cambios en el formulario de Materias
+  const handleMateriaChange = (e) => {
+    const { name, value } = e.target;
+    setMateriaForm({ ...materiaForm, [name]: value });
+  };
+
+  // Cargar Materias
+  const fetchMaterias = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/materias');
+      setMaterias(response.data);
+    } catch (error) {
+      alert('Error al obtener materias: ' + error.message);
+    }
+  };
+
+  // Agregar / Actualizar Materia
+  const handleMateriaSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const reqArray = materiaForm.req.split(',').map(r => r.trim()).filter(r => r !== '');
+      const habilitaArray = materiaForm.habilita.split(',').map(h => h.trim()).filter(h => h !== '');
+
+      const materiaData = {
+        codigo: materiaForm.codigo,
+        nombre: materiaForm.nombre,
+        semestre: materiaForm.semestre,
+        req: reqArray,
+        habilita: habilitaArray
+      };
+
+      if (editingMateriaId) {
+        await axios.put(`http://localhost:5000/api/materias/${editingMateriaId}`, materiaData);
+        alert('Materia actualizada exitosamente');
+        setEditingMateriaId(null);
+      } else {
+        await axios.post('http://localhost:5000/api/materias', materiaData);
+        alert('Materia agregada exitosamente');
+      }
+
+      setMateriaForm({ codigo: '', nombre: '', semestre: 1, req: '', habilita: '' });
+      fetchMaterias();
+    } catch (error) {
+      alert('Error al procesar la materia: ' + error.message);
+    }
+  };
+
+  // Editar Materia
+  const handleEditMateria = (id) => {
+    const materia = materias.find(m => m._id === id);
+    setMateriaForm({
+      codigo: materia.codigo,
+      nombre: materia.nombre,
+      semestre: materia.semestre,
+      req: materia.req.join(', '),
+      habilita: materia.habilita.join(', ')
+    });
+    setEditingMateriaId(id);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  // Eliminar Materia
+  const handleDeleteMateria = async (id) => {
+    try {
+      await axios.delete(`http://localhost:5000/api/materias/${id}`);
+      alert('Materia eliminada');
+      fetchMaterias();
+    } catch (error) {
+      alert('Error al eliminar la materia: ' + error.message);
+    }
+  };
+
+  // Cargar datos al iniciar
   useEffect(() => {
     fetchUsers();
     fetchNoticias();
-    fetchAcreditaciones(); // Asegúrate de llamar esta función aquí
-
+    fetchAcreditaciones();
+    fetchMaterias();
   }, []);
 
   return (
     <body className='body-admin'>
       <div className='admin-container dark:bg-white dark:text-black'>
         <h1 className='admin-title'>Panel de Administración</h1>
-        <h1 className='admin-title'>Agregar Noticias</h1>
 
         {/* Formulario para Noticias */}
+        <h1 className='admin-title'>Agregar Noticias</h1>
         <form onSubmit={handleSubmit} className='admin-form'>
           <div className='form-group '>
             <label htmlFor='nombre'>Nombre de la Noticia</label>
@@ -235,10 +325,9 @@ const handleDeleteAcreditacion = async (acreditacionId) => {
           <button type='submit'>{editingId ? 'Actualizar' : 'Agregar'}</button>
         </form>
 
-        {/* Formulario para Usuarios */}
-
+        {/* Formulario para Usuarios Admin */}
+        <h1 className='admin-title'>Agregar Administradores</h1>
         <form onSubmit={handleUserSubmit} className='admin-form'>
-          <h1 className='admin-title'>Agregar Administradores</h1>
           <div className='form-group'>
             <label htmlFor='nombre'>Nombre del Usuario</label>
             <input
@@ -262,7 +351,7 @@ const handleDeleteAcreditacion = async (acreditacionId) => {
             />
           </div>
           <div className='form-group'>
-            <label htmlFor='correo'>Contraseña</label>
+            <label htmlFor='password'>Contraseña</label>
             <input
               type='password'
               id='password'
@@ -274,48 +363,142 @@ const handleDeleteAcreditacion = async (acreditacionId) => {
           </div>
           <button type='submit'>Agregar Usuario</button>
         </form>
-        <div>
-  <h1 className='admin-title'>Agregar Acreditaciones</h1>
-    <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
-      <div className='form-group'>
-        <label htmlFor="nombre">Nombre</label>
-        <input
-          type="text"
-          id="nombre"
-          name="nombre"
-          value={acreditacionForm.nombre}
-          onChange={handleAcreditacionChange}
-          required
-        />
-      </div>
-      <div className='form-group'>
-        <label htmlFor="imagen">Imagen</label>
-        <input
-          type="file"
-          id="imagen"
-          name="imagen"
-          accept="image/*"
-          onChange={handleAcreditacionChange}
-          required
-        />
-      </div>
-      <button type="submit">Agregar Acreditación</button>
-    </form>
 
-      <h1 className='admin-title'>Acreditaciones Existentes</h1>
-      <ul className='acreditaciones-list'>
-  {acreditaciones.map((acreditacion) => (
-    <li key={acreditacion._id} className='acreditacion-item'>
-      <p className='titeacre'>{acreditacion.nombre}</p>
-      <img src={acreditacion.imagen} alt={acreditacion.nombre} className='acreditacion-image' />
-      <button onClick={() => handleDeleteAcreditacion(acreditacion._id)} className="delete-button">
-        Eliminar
-      </button>
-    </li>
-  ))}
-</ul>
-</div>
+        {/* Formulario para Acreditaciones */}
+        <h1 className='admin-title'>Agregar Acreditaciones</h1>
+        <form onSubmit={handleAcreditacionSubmit} className='acreditaciones-form admin-form'>
+          <div className='form-group'>
+            <label htmlFor="nombre">Nombre</label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              value={acreditacionForm.nombre}
+              onChange={handleAcreditacionChange}
+              required
+            />
+          </div>
+          <div className='form-group'>
+            <label htmlFor="imagen">Imagen</label>
+            <input
+              type="file"
+              id="imagen"
+              name="imagen"
+              accept="image/*"
+              onChange={handleAcreditacionChange}
+              required
+            />
+          </div>
+          <button type="submit">Agregar Acreditación</button>
+        </form>
 
+        {/* Lista de Acreditaciones */}
+        <h1 className='admin-title'>Acreditaciones Existentes</h1>
+        <ul className='acreditaciones-list'>
+          {acreditaciones.map((acreditacion) => (
+            <li key={acreditacion._id} className='acreditacion-item'>
+              <p className='titeacre'>{acreditacion.nombre}</p>
+              <img src={acreditacion.imagen} alt={acreditacion.nombre} className='acreditacion-image' />
+              <button onClick={() => handleDeleteAcreditacion(acreditacion._id)} className="delete-button">
+                Eliminar
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        {/* Formulario para Materias */}
+        <h1 className='admin-title'>Agregar / Editar Materias</h1>
+        <form onSubmit={handleMateriaSubmit} className='admin-form'>
+          <div className='form-group'>
+            <label htmlFor='codigo'>Código de la Materia (ej: DER-111)</label>
+            <input
+              type='text'
+              id='codigo'
+              name='codigo'
+              value={materiaForm.codigo}
+              onChange={handleMateriaChange}
+              required
+            />
+          </div>
+
+          <div className='form-group'>
+            <label htmlFor='nombre'>Nombre de la Materia</label>
+            <input
+              type='text'
+              id='nombre'
+              name='nombre'
+              value={materiaForm.nombre}
+              onChange={handleMateriaChange}
+              required
+            />
+          </div>
+
+          <div className='form-group'>
+            <label htmlFor='semestre'>Semestre</label>
+            <input
+              type='number'
+              id='semestre'
+              name='semestre'
+              value={materiaForm.semestre}
+              onChange={handleMateriaChange}
+              required
+            />
+          </div>
+
+          <div className='form-group'>
+            <label htmlFor='req'>Requisitos (separados por coma)</label>
+            <input
+              type='text'
+              id='req'
+              name='req'
+              value={materiaForm.req}
+              onChange={handleMateriaChange}
+            />
+          </div>
+
+          <div className='form-group'>
+            <label htmlFor='habilita'>Habilita (separados por coma)</label>
+            <input
+              type='text'
+              id='habilita'
+              name='habilita'
+              value={materiaForm.habilita}
+              onChange={handleMateriaChange}
+            />
+          </div>
+
+          <button type='submit'>{editingMateriaId ? 'Actualizar Materia' : 'Agregar Materia'}</button>
+        </form>
+
+        {/* Tabla de Materias */}
+        <h1 className='admin-title'>Administrar Materias</h1>
+        <table className='admin-table'>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Nombre</th>
+              <th>Semestre</th>
+              <th>Requisitos</th>
+              <th>Habilita</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {materias.map(materia => (
+              <tr key={materia._id}>
+                <td>{materia.codigo}</td>
+                <td>{materia.nombre}</td>
+                <td>{materia.semestre}</td>
+                <td>{materia.req.join(', ')}</td>
+                <td>{materia.habilita.join(', ')}</td>
+                <td>
+                  <button onClick={() => handleEditMateria(materia._id)}>Editar</button>
+                  <button onClick={() => handleDeleteMateria(materia._id)}>Eliminar</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         {/* Tabla de Usuarios */}
         <h1 className='admin-title'>Administrar Usuarios</h1>
@@ -367,8 +550,8 @@ const handleDeleteAcreditacion = async (acreditacionId) => {
             ))}
           </tbody>
         </table>
-      </div>
 
+      </div>
     </body>
   );
 };
