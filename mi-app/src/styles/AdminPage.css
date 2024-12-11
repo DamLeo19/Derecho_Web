@@ -200,6 +200,72 @@
   color: black;
   font-variant: var(--black);
 }
+
+/* Previsualización de imagen */
+.image-preview {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  border: 1px solid var(--quick-silver);
+  padding: 10px;
+  border-radius: var(--radius-24);
+  background-color: var(--white);
+}
+
+.image-preview.dark {
+  background-color: var(--eerie-black-1);
+}
+
+.image-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Estilo para el combo box */
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--quick-silver);
+  border-radius: var(--radius-24);
+  font-size: var(--fontSize-body-3);
+  color: var(--smoky-black-1);
+  background-color: var(--white);
+  appearance: none; /* Elimina el estilo predeterminado del navegador */
+  cursor: pointer;
+  transition: var(--transition-1);
+  position: relative;
+}
+
+/* Tema oscuro */
+select.dark {
+  color: var(--white);
+  background-color: var(--eerie-black-1);
+  border: 1px solid var(--quick-silver);
+}
+
+/* Agrega un ícono para indicar el dropdown */
+select::after {
+  content: "▼"; /* Flecha */
+  font-size: 14px;
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+}
+
+/* Efecto al pasar el mouse */
+select:hover {
+  border-color: var(--gold-crayola);
+}
+
+/* Efecto al enfocarse */
+select:focus {
+  outline: none;
+  box-shadow: 0 0 4px var(--gold-crayola);
+  border-color: var(--gold-crayola);
+}
+
+
 .acreditaciones-list {
   display: flex;
   flex-wrap: wrap;
