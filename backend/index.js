@@ -6,6 +6,7 @@ const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
 const userRoutes = require('./routes/userRoutes'); // Rutas para usuarios
 const noticiasRoutes = require('./routes/noticiasRoutes'); // Importa las rutas de noticias
+const acreditacionesRoutes = require('./routes/acreditacionRoutes');
 
 const app = express();
 const PORT = 5000;
@@ -31,6 +32,7 @@ mongoose.connect('mongodb+srv://imajesus08:gpEO6dQD8XSLrNnF@cluster0.7lkgp.mongo
 // Rutas
 app.use('/api/users', userRoutes); // Rutas de usuarios
 app.use('/api/noticias', noticiasRoutes); // Asegúrate de que esta ruta esté definida en tu backend
+app.use('/api/acreditaciones', acreditacionesRoutes);
 
 // Iniciar el servidor
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));

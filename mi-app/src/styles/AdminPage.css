@@ -194,3 +194,43 @@
   margin-bottom: 20px;
   transition: var(--transition-1);
 }
+
+.titeacre{
+  font-size: 20px;
+  color: black;
+  font-variant: var(--black);
+}
+.acreditaciones-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px; /* Espaciado entre las acreditaciones */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center; /* Alinea las acreditaciones en el centro */
+}
+
+.acreditacion-item {
+  text-align: center;
+  max-width: 150px; /* Ajusta este valor según el tamaño que desees */
+}
+
+.acreditacion-image {
+  width: 100%; /* Asegura que la imagen ocupe todo el ancho del contenedor */
+  height: auto;
+  border-radius: 8px; /* Añade esquinas redondeadas, opcional */
+}
+.delete-button {
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #ff4d4d; /* Rojo */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.delete-button:hover {
+  background-color: #d93636; /* Rojo oscuro */
+}

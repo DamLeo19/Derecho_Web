@@ -1,11 +1,28 @@
-// src/components/AccreditationSection.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import axios from 'axios';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import './AccreditationSection.css';
 
 const AccreditationSection = () => {
+  const [acreditaciones, setAcreditaciones] = useState([]);
+
+  // Cargar acreditaciones desde la API
+  useEffect(() => {
+    const fetchAcreditaciones = async () => {
+      try {
+        // Aquí usamos la ruta que tienes definida en el backend para obtener las acreditaciones
+        const response = await axios.get('http://localhost:5000/api/acreditaciones');
+        setAcreditaciones(response.data);
+      } catch (error) {
+        console.error('Error al cargar las acreditaciones:', error);
+      }
+    };
+
+    fetchAcreditaciones();
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -32,19 +49,6 @@ const AccreditationSection = () => {
     ]
   };
 
-  const acreditaciones = [
-    {
-      img: "https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2023/01/web-Acreditada-SUB.jpg?resize=700%2C700&ssl=1",
-      title: "ACREDITADO EN LA SUB",
-      details: "DETALLES"
-    },
-    {
-      img: "https://i0.wp.com/lpz.ucb.edu.bo/wp-content/uploads/2022/07/iidea.jpg?resize=700%2C700&ssl=1",
-      title: "ACREDITADO EN IIDEA",
-      details: "DETALLES"
-    }
-  ];
-
   return (
     <section className="section service bg-black-10 text-center dark:bg-white dark:text-black" aria-label="service">
       <div className="container dark:bg-white dark:text-black">
@@ -56,24 +60,22 @@ const AccreditationSection = () => {
         <Slider {...settings}>
           {acreditaciones.map((acreditacion, index) => (
             <div key={index} className="service-card dark:bg-gray-100 dark:text-black">
-              <a href="#" className="has-before hover:shine dark:bg-white dark:text-black">
-                <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
-                  <img
-                    src={acreditacion.img}
-                    width="285"
-                    height="336"
-                    loading="lazy"
-                    alt={acreditacion.title}
-                    className="img-cover"
-                  />
-                </figure>
-              </a>
+              <figure className="card-banner img-holder" style={{ '--width': 285, '--height': 336 }}>
+                <img
+                  src={acreditacion.imagen} // Usando el campo "imagen" de tu modelo
+                  width="285"
+                  height="336"
+                  loading="lazy"
+                  alt={acreditacion.nombre} // Usando el campo "nombre" de tu modelo
+                  className="img-cover"
+                />
+              </figure>
               <div className="card-content dark:bg-gray-100 dark:text-black">
                 <h3 className="title-4 card-title dark:bg-gray-100 dark:text-black">
-                  <a href="#">{acreditacion.title}</a>
+                  {acreditacion.nombre} {/* Aquí mostramos el nombre de la acreditación */}
                 </h3>
                 <a href="#" className="btn-text hover-underline label-2">
-                  {acreditacion.details}
+                  Detalles
                 </a>
               </div>
             </div>
