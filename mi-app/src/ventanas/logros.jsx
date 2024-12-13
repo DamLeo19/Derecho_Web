@@ -1,23 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CardDocentes from "../components/CardDocentes";
+import axios from "axios";
 import "./logros.css";
 import "../components/CardDocentes.css";
 
 const NuevaPagina = () => {
-  const logros = [
-    {
-      titulo: "Logro en la comunidad",
-      contenido: "Este logro fue reconocido por su impacto social en la región.",
-    },
-    {
-      titulo: "Reconocimiento académico",
-      contenido: "Por mantener un alto estándar en los procesos de aprendizaje.",
-    },
-    {
-      titulo: "Innovación jurídica",
-      contenido: "Por aportar soluciones innovadoras a problemas legales complejos.",
-    },
-  ];
+  const [logros, setLogros] = useState([]);
+  const [error, setError] = useState(null); // Estado para manejar errores
+
+  useEffect(() => {
+    // Llamada a la API para obtener los logros
+    const fetchLogros = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/logros');
+        setLogros(response.data); // Guardar los logros en el estado
+      } catch (error) {
+        setError('No se pudieron obtener los logros.');
+        console.error('Error al obtener los logros:', error);
+      }
+    };
+
+    fetchLogros();
+  }, []);
 
   const estudiantesDestacados = [
     {
@@ -50,21 +54,27 @@ const NuevaPagina = () => {
         </h1>
         <section className="logros">
           <div className="tarjetas">
-            {logros.map((logro, index) => (
-              <div key={index} className="tarjeta">
-                {/* Contenedor interno para el efecto 3D */}
-                <div className="tarjeta-inner">
-                  <div className="tarjeta-frente">
-                    <h3>{logro.titulo}</h3>
+            {error ? (
+              <p>{error}</p> // Mostrar mensaje de error si no se pueden obtener los logros
+            ) : logros.length > 0 ? (
+              logros.map((logro) => (
+                <div key={logro._id} className="tarjeta">
+                  <div className="tarjeta-inner">
+                    <div className="tarjeta-frente">
+                      <h3>{logro.titulo}</h3>
+                    </div>
+                    <div className="tarjeta-reverso">
+                      <p>{logro.descripcion}</p>
+                      <p><strong>Categoría:</strong> {logro.categoria}</p>
+                      <p><strong>Fecha:</strong> {new Date(logro.fecha).toLocaleDateString()}</p>
+                    </div>
                   </div>
-                  <div className="tarjeta-reverso">
-                    <p>{logro.contenido}</p>
-                  </div>
+                  <div className="trofeo">🏆</div>
                 </div>
-                {/* Trofeo al lado derecho */}
-                <div className="trofeo">🏆</div>
-              </div>
-            ))}
+              ))
+            ) : (
+              <p>No hay logros disponibles.</p> // Mostrar mensaje si no hay logros
+            )}
           </div>
         </section>
         <section className="estudiantes-destacados">

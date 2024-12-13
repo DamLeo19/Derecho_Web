@@ -40,6 +40,15 @@
    */
   --transition-1: 250ms ease;
 }
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+
+body {
+  font-family: var(--fontFamily-dm_sans);
+  background-color: var(--eerie-black-1);
+  color: var(--white);
+  margin: 0;
+  padding: 0;
+}
 
 .logros-title {
   color: white;
@@ -49,17 +58,10 @@
   font-family: "Geist", sans-serif;
   margin: 0 20px;
 }
-.nueva-pagina {
-  padding-top: 0; /* Ajusta o elimina espacio adicional */
-  margin-bottom: 3em;
-  font-family: var(--fontFamily-dm_sans);
-  color: var(--white);
-  background-color: var(--eerie-black-1);
-}
 
-.contenido {
-  max-width: 1000px;
-  margin: 0 auto;
+.nueva-pagina {
+  padding-top: 0;
+  margin-bottom: 3em;
 }
 
 .titulo-principal {
@@ -73,89 +75,34 @@
 
 .tarjetas {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
 }
 
 .tarjeta {
-  width: 250px;
+  width: 450px;
   height: 350px;
-  perspective: 1000px; /* Permite la transformación 3D */
-  cursor: pointer;
-}
-
-.tarjeta-inner {
-  width: 100%;
-  height: 100%;
   position: relative;
-  transform-style: preserve-3d; /* Habilita la visualización en 3D */
-  transition: transform var(--transition-1); /* Controla la duración del giro */
-}
-
-.tarjeta:hover .tarjeta-inner {
-  transform: rotateY(180deg); /* Aplica el giro al contenedor interno */
-}
-
-.tarjeta-frente,
-.tarjeta-reverso {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden; /* Oculta la cara trasera al girar */
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+  perspective: 1000px;
+  cursor: pointer;
   border-radius: var(--radius-24);
+  background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+  box-shadow: 
+    0 4px 6px rgba(0, 0, 0, 0.5), 
+    0 1px 3px rgba(0, 0, 0, 0.3), 
+    inset 0 0 8px rgba(205, 95, 42, 0.7);
+  transition: all 0.4s ease;
+  overflow: hidden;
 }
 
-.tarjeta-frente {
-  background-color: var(--gold-crayola);
+.tarjeta:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 0 15px 5px rgba(205, 95, 42, 0.8),
+    0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
-.tarjeta-reverso {
-  background-color: var(--black);
-  transform: rotateY(180deg); /* Posiciona la cara trasera para el giro */
-  text-align: center;
-  color: var(--white); /* Cambiado a blanco para mayor contraste */
-  padding: 20px; /* Espacio interno para que el texto no sobresalga */
-  font-size: 6rem; /* Aumenta el tamaño de la letra */
-  line-height: 1.5; /* Mejora la legibilidad del texto */
-  display: flex; /* Centra contenido adicional */
-  justify-content: center; /* Centra horizontalmente */
-  align-items: center; /* Centra verticalmente */
-  border-radius: var(--radius-24); /* Mantiene bordes redondeados */
-  box-sizing: border-box; /* Asegura que el padding no afecte el tamaño total */
-}
-
-.tarjetas-estudiantes {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.estudiante {
-  margin-bottom: 20px;
-}
-
-.estudiante h3 {
-  font-size: var(--fontSize-title-2);
-  margin-bottom: 10px;
-}
-
-.estudiante p {
-  font-size: var(--fontSize-body-3);
-  color: var(--quick-silver);
-}
-
-.card__title--small {
-  font-size: var(--fontSize-label-1);
-  line-height: var(--lineHeight-5);
-  margin-bottom: 10px;
-  text-align: center;
-}
 .tarjeta-inner {
   width: 100%;
   height: 100%;
@@ -167,16 +114,92 @@
 .tarjeta:hover .tarjeta-inner {
   transform: rotateY(180deg);
 }
-.trofeo {
+
+.tarjeta-frente,
+.tarjeta-reverso {
+  width: 100%;
+  height: 100%;
   position: absolute;
-  top: -15px; /* Ajusta según sea necesario */
-  right: -15px; /* Ajusta según sea necesario */
-  font-size: 2.5rem; /* Tamaño del trofeo */
-  color: var(--gold-crayola); /* Color del trofeo */
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-align: center;
+  border-radius: var(--radius-24);
 }
-.tarjeta {
-  position: relative; /* Necesario para que el trofeo se posicione relativo a la tarjeta */
+
+.tarjeta-frente {
+  background: linear-gradient(135deg, #2a2a2a, var(--gold-crayola));
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  font-size: 4rem;
+  color: var(--white);
 }
+
+.tarjeta-reverso {
+  background-color: var(--black);
+  transform: rotateY(180deg);
+  color: var(--gold-crayola);
+  font-size: 3rem;
+  letter-spacing: 2px;
+}
+
+.tarjeta .trofeo {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  font-size: 3rem;
+  color: rgba(205, 95, 42, 0.9);
+  text-shadow: 0 0 10px rgba(205, 95, 42, 0.7);
+}
+
+/* Indicadores de estudiantes en zigzag */
+.tarjetas-estudiantes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.tarjetas-estudiantes > *:nth-child(1) {
+  grid-column: 2 / 3;
+}
+
+.tarjetas-estudiantes > *:nth-child(2) {
+  grid-column: 1 / 2;
+}
+
+.tarjetas-estudiantes > *:nth-child(3) {
+  grid-column: 3 / 4;
+}
+
+.tarjeta-estudiante-con-indicador {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: relative;
+}
+
+.indicador {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10rem;
+  font-weight: bold;
+  color: var(--gold-crayola);
+}
+
+.tarjeta-estudiante-con-indicador:nth-child(odd) .indicador {
+  left: -40px;
+}
+
+.tarjeta-estudiante-con-indicador:nth-child(even) .indicador {
+  left: -40px;
+  right: auto;
+}
+
+/* Banner */
 .logros-banner {
   margin-top: 5%;
   position: relative;
@@ -197,47 +220,68 @@
   align-items: center;
   justify-content: center;
 }
-.tarjetas-estudiantes {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas */
-  gap: 20px; /* Espaciado entre tarjetas */
+/* TROFEO A LA IZQUIERDA, GRANDE Y BRILLANTE */
+.tarjeta .trofeo {
+  position: absolute;
+  top: 50%;
+  left: -60px; /* Posición a la izquierda */
+  transform: translateY(-50%);
+  font-size: 6rem; /* Tamaño grande */
+  color: rgba(205, 95, 42, 0.9);
+  text-shadow: 
+    0 0 15px rgba(205, 95, 42, 0.9),
+    0 0 30px rgba(205, 95, 42, 0.8),
+    0 0 45px rgba(205, 95, 42, 0.7);
+  animation: glow 2s infinite alternate; /* Brillo intermitente */
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: 
+      0 0 15px rgba(205, 95, 42, 0.9),
+      0 0 30px rgba(205, 95, 42, 0.8),
+      0 0 45px rgba(205, 95, 42, 0.7);
+  }
+  100% {
+    text-shadow: 
+      0 0 25px rgba(205, 95, 42, 1),
+      0 0 50px rgba(205, 95, 42, 0.9),
+      0 0 75px rgba(205, 95, 42, 0.8);
+  }
+}
+
+/* LOGROS: FILA DE 3 COLUMNAS */
+.tarjetas {
+  display: grid; /* Cambio a grid */
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+  gap: 40px; /* Espacio entre tarjetas */
   justify-content: center;
-  margin-top: 20px;
+  margin: 0 auto;
+  max-width: 1200px; /* Limitar el ancho */
 }
 
-.tarjetas-estudiantes > *:nth-child(1) {
-  grid-column: 2 / 3; /* Centra la primera tarjeta */
+/* CENTRAR TARJETAS DE ESTUDIANTES */
+.tarjetas-estudiantes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centrado horizontal */
+  gap: 30px; /* Menor separación */
+  margin: 20px auto; /* Margen superior e inferior reducido */
 }
 
-.tarjetas-estudiantes > *:nth-child(2) {
-  grid-column: 1 / 2; /* Segunda tarjeta a la izquierda */
-}
-
-.tarjetas-estudiantes > *:nth-child(3) {
-  grid-column: 3 / 4; /* Tercera tarjeta a la derecha */
-}
 .tarjeta-estudiante-con-indicador {
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center; /* Alineación centrada */
   position: relative;
 }
 
 .indicador {
   position: absolute;
-  height: -80px;
-  top: 50%; /* Centrado verticalmente */
-  transform: translateY(-50%); /* Ajusta el centrado */
-  font-size: 10rem; /* Tamaño del texto */
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 8rem; /* Tamaño ajustado */
   font-weight: bold;
   color: var(--gold-crayola);
-}
-
-.tarjeta-estudiante-con-indicador:nth-child(odd) .indicador {
-  left: -40px; /* Coloca el indicador a la izquierda */
-}
-
-.tarjeta-estudiante-con-indicador:nth-child(even) .indicador {
-  left: -40px; /* Ahora también a la izquierda */
-  right: auto; /* Desactiva cualquier posición derecha */
+  text-shadow: 0 0 15px rgba(205, 95, 42, 0.7);
 }
