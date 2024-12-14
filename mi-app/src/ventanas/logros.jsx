@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
-import CardDocentes from "../components/CardDocentes";
+import CardL from "../components/CardL"; // Importa el nuevo componente
 import axios from "axios";
 import "./logros.css";
 import "../components/CardDocentes.css";
+import CardDocentes from "../components/CardDocentes";
+import "../ventanas/logros.css";
+
 
 const NuevaPagina = () => {
   const [logros, setLogros] = useState([]);
-  const [error, setError] = useState(null); // Estado para manejar errores
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Llamada a la API para obtener los logros
     const fetchLogros = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/logros');
-        setLogros(response.data); // Guardar los logros en el estado
+        setLogros(response.data);
       } catch (error) {
         setError('No se pudieron obtener los logros.');
         console.error('Error al obtener los logros:', error);
@@ -42,38 +44,41 @@ const NuevaPagina = () => {
   ];
 
   return (
-    <div className="nueva-pagina dark:bg-white dark:text-black">
-      <div className="logros-banner">
-        <div className="logros-overlay">
-          <h1 className="logros-title">Logros</h1>
+    <div className="nueva-pagina_logro dark:bg-gray-900 dark:text-white">
+      <div className="logro-banner">
+        <div className="logro-overlay">
+          <h1 className="logro-title">Logros</h1>
         </div>
       </div>
-      <main className="contenido">
-        <h1 className="titulo-principal">
+      <main className="contenido_logro">
+        <h1 className="titulo-principal_logro">
           ¡La carrera de derecho tiene los siguientes enorgullecentes logros para la universidad!
         </h1>
-        <section className="logros">
-          <div className="tarjetas">
+        <section className="logros_logro">
+          <div className="tarjetas_logro">
             {error ? (
-              <p>{error}</p> // Mostrar mensaje de error si no se pueden obtener los logros
+              <p>{error}</p>
             ) : logros.length > 0 ? (
               logros.map((logro) => (
-                <div key={logro._id} className="tarjeta">
-                  <div className="tarjeta-inner">
-                    <div className="tarjeta-frente">
-                      <h3>{logro.titulo}</h3>
-                    </div>
-                    <div className="tarjeta-reverso">
-                      <p>{logro.descripcion}</p>
-                      <p><strong>Categoría:</strong> {logro.categoria}</p>
-                      <p><strong>Fecha:</strong> {new Date(logro.fecha).toLocaleDateString()}</p>
-                    </div>
-                  </div>
-                  <div className="trofeo">🏆</div>
-                </div>
+                <CardL
+                  key={logro._id}
+                  title={logro.titulo} 
+                  description={
+                    <>
+                      <p className="logro-fecha">
+                        Fecha: {new Date(logro.fecha).toLocaleDateString()}
+                      </p>
+                      <p className="logro-categoria">
+                        Categoría: {logro.categoria}
+                      </p>
+                      <p className="logro-descripcion">{logro.descripcion}</p>
+                    </>
+                  }
+                  icon="🏆"
+                />
               ))
             ) : (
-              <p>No hay logros disponibles.</p> // Mostrar mensaje si no hay logros
+              <p>No hay logros disponibles.</p>
             )}
           </div>
         </section>
@@ -92,6 +97,7 @@ const NuevaPagina = () => {
             ))}
           </div>
         </section>
+
       </main>
     </div>
   );
