@@ -11,13 +11,13 @@ const VideoCard = ({ title, description }) => {
   };
 
   return (
-    <div className="card-container">
-      <div className="video-card">
-        <div className="video-wrapper">
+    <div className="card-container-L">
+      <div className="video-card-L">
+        <div className="video-wrapper-L">
           {/* Video dinámico */}
           <video
             ref={videoRef}
-            className="video-content"
+            className="video-content-L"
             autoPlay
             muted
             onTimeUpdate={handleTimeUpdate} // Se ejecuta cada vez que el tiempo de reproducción cambia
@@ -28,14 +28,14 @@ const VideoCard = ({ title, description }) => {
         </div>
 
         {/* Capa de detalles que aparece al pasar el cursor */}
-        <div className="details-overlay">
-          <p className="details-text">
+        <div className="details-overlay-L">
+          <p className="details-text-L">
             {description || "Descripción no disponible"} {/* Descripción dinámica */}
           </p>
         </div>
 
         {/* Título con fondo negro */}
-        <div className="card-title">
+        <div className="card-title-L">
           <p>{title || "Título no disponible"}</p> {/* Título dinámico */}
         </div>
       </div>

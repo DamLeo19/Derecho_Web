@@ -1,17 +1,17 @@
 /* Alinear todo el texto de los párrafos a la izquierda */
-p {
+p-L {
   text-align: left;
   margin: 0;
   padding: 0;
 }
 
 /* Cambiar el color de la categoría a verde */
-.category {
+.category-L {
   color: green;
 }
 
 /* Contenedor principal de tarjetas */
-.tarjetas_logro {
+.tarjetas_logro-L {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -20,12 +20,12 @@ p {
 }
 
 /* VideoCard para ajustar tamaño y formato */
-.card-container {
+.card-container-L {
   flex: 0 1 calc(33.33% - 2rem); /* 3 tarjetas por fila */
   box-sizing: border-box;
 }
 
-.video-card {
+.video-card-L {
   position: relative;
   width: 60%;
   height: 500px;
@@ -36,28 +36,28 @@ p {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.video-card:hover {
+.video-card-L:hover {
   transform: scale(1.05);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Tipografía más amigable y redonda */
-body, p, h1, h2, h3 {
+body-L, p-L, h1-L, h2-L, h3-L {
   font-family: 'Poppins', Arial, sans-serif;
   font-weight: 500;
   margin: 0;
   font-size: 2.2rem !important;
 }
 
-.card-title {
+.card-title-L {
   font-size: 5rem !important;
 }
 
-.details-text {
-  font-size: 3.9rem !important;
+.details-text-L {
+  font-size: 1.9rem !important;
 }
 
-.card-title {
+.card-title-L {
   position: absolute;
   bottom: 0;
   width: 100%;
@@ -69,13 +69,13 @@ body, p, h1, h2, h3 {
   font-weight: bold;
 }
 
-.details-text {
-  font-size: 3.9rem;
+.details-text-L {
+  font-size: 1.9rem;
   line-height: 1.4;
   text-align: center;
 }
 
-.details-overlay {
+.details-overlay-L {
   position: absolute;
   top: 0;
   left: 0;
@@ -93,6 +93,6 @@ body, p, h1, h2, h3 {
   box-sizing: border-box;
 }
 
-.video-card:hover .details-overlay {
+.video-card-L:hover .details-overlay-L {
   opacity: 1;
 }

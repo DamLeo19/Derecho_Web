@@ -71,7 +71,7 @@ body {
   justify-content: center;
 }
 .titulo-principal_logro {
-  font-size: calc(15rem + 5vw); /* Tamaño dinámico en función del ancho de la pantalla */
+  font-size: calc(0.05rem + 5vw); /* Tamaño dinámico en función del ancho de la pantalla */
   font-family: "Forum", cursive;
   font-weight: 600;
   text-align: left; /* Alineación izquierda */
@@ -163,17 +163,20 @@ body {
   font-weight: bold;
   font-size: 18px;
 }
-
-
-/* LOGROS: FILA DE 3 COLUMNAS */
-.tarjetas {
-  display: grid; /* Cambio a grid */
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas */
-  gap: 40px; /* Espacio entre tarjetas */
-  justify-content: center;
-  margin: 0 auto;
-  max-width: 1200px; /* Limitar el ancho */
+.tarjetas_logro {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Espacio entre las tarjetas */
+  justify-content: space-between; /* Para que se distribuyan equitativamente */
 }
+
+.tarjetas_logro .card-l {
+  flex: 1 1 calc(33.33% - 2rem); /* Cada tarjeta ocupa un 33.33% del contenedor menos el espacio entre ellas */
+  box-sizing: border-box;
+}
+
+
+
 
 /* CENTRAR TARJETAS DE ESTUDIANTES EN UNA FILA HORIZONTAL */
 .tarjetas-estudiantes {
