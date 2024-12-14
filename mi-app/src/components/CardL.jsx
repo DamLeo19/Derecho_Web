@@ -36,7 +36,7 @@ const VideoCard = ({ title, description }) => {
 
         {/* Título con fondo negro */}
         <div className="card-title-L">
-          <p>{title || "Título no disponible"}</p> {/* Título dinámico */}
+          <p-L>{title || "Título no disponible"}</p-L> {/* Título dinámico */}
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import "./logros.css";
 import "../components/CardDocentes.css";
 import CardDocentes from "../components/CardDocentes";
 import "../ventanas/logros.css";
+import "../styles/CardL.css";
+
 
 
 const NuevaPagina = () => {
@@ -51,13 +53,13 @@ const NuevaPagina = () => {
         </div>
       </div>
       <main className="contenido_logro">
-        <h1 className="titulo-principal_logro">
+        <h1-L className="titulo-principal_logro">
           ¡La carrera de derecho tiene los siguientes enorgullecentes logros para la universidad!
-        </h1>
+        </h1-L>
         <section className="logros_logro">
           <div className="tarjetas_logro">
             {error ? (
-              <p>{error}</p>
+              <p-L>{error}</p-L>
             ) : logros.length > 0 ? (
               logros.map((logro) => (
                 <CardL
@@ -65,25 +67,25 @@ const NuevaPagina = () => {
                   title={logro.titulo} 
                   description={
                     <>
-                      <p className="logro-fecha">
+                      <p-L className="logro-fecha">
                         Fecha: {new Date(logro.fecha).toLocaleDateString()}
-                      </p>
-                      <p className="logro-categoria">
+                      </p-L>
+                      <p-L className="logro-categoria">
                         Categoría: {logro.categoria}
-                      </p>
-                      <p className="logro-descripcion">{logro.descripcion}</p>
+                      </p-L>
+                      <p-L className="logro-descripcion">{logro.descripcion}</p-L>
                     </>
                   }
                   icon="🏆"
                 />
               ))
             ) : (
-              <p>No hay logros disponibles.</p>
+              <p-L>No hay logros disponibles.</p-L>
             )}
           </div>
         </section>
         <section className="estudiantes-destacados">
-          <h1>Top 3 Estudiantes Destacados</h1>
+          <h1-L>Top 3 Estudiantes Destacados</h1-L>
           <div className="tarjetas-estudiantes">
             {estudiantesDestacados.map((estudiante, index) => (
               <div className="tarjeta-estudiante-con-indicador" key={index}>
