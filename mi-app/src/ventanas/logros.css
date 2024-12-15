@@ -163,17 +163,9 @@ body {
   font-weight: bold;
   font-size: 18px;
 }
-.tarjetas_logro {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px; /* Espacio entre las tarjetas */
-  justify-content: space-between; /* Para que se distribuyan equitativamente */
-}
 
-.tarjetas_logro .card-l {
-  flex: 1 1 calc(33.33% - 2rem); /* Cada tarjeta ocupa un 33.33% del contenedor menos el espacio entre ellas */
-  box-sizing: border-box;
-}
+
+
 
 
 

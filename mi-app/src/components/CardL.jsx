@@ -1,46 +1,22 @@
-import React, { useRef } from "react";
-import "../styles/CardL.css"; // Asegúrate de tener el CSS importado
+import React from "react";
+import "../styles/CardL.css";
 
-const VideoCard = ({ title, description }) => {
-  const videoRef = useRef(null);
-
-  const handleTimeUpdate = () => {
-    if (videoRef.current && videoRef.current.currentTime >= 18) {
-      videoRef.current.pause(); // Detenemos el video a los 18 segundos
-    }
-  };
-
+const CardL = ({ title, description, icon, imageUrl, isReversed }) => {
   return (
-    <div className="card-container-L">
-      <div className="video-card-L">
-        <div className="video-wrapper-L">
-          {/* Video dinámico */}
-          <video
-            ref={videoRef}
-            className="video-content-L"
-            autoPlay
-            muted
-            onTimeUpdate={handleTimeUpdate} // Se ejecuta cada vez que el tiempo de reproducción cambia
-            src="/images/logro.mp4" // Ruta al video en la carpeta public
-          >
-            Tu navegador no soporta el video.
-          </video>
-        </div>
-
-        {/* Capa de detalles que aparece al pasar el cursor */}
-        <div className="details-overlay-L">
-          <p className="details-text-L">
-            {description || "Descripción no disponible"} {/* Descripción dinámica */}
-          </p>
-        </div>
-
-        {/* Título con fondo negro */}
-        <div className="card-title-L">
-          <p-L>{title || "Título no disponible"}</p-L> {/* Título dinámico */}
-        </div>
+    <div className={`card-logro ${isReversed ? "card-reverse" : ""}`}>
+      {/* Imagen fuera del recuadro */}
+      <div className="card-image">
+        <img src={imageUrl || "https://img.freepik.com/vector-premium/logro-equipo-trabajo-equipo-colaborar-trabajar-juntos-lograr-objetivo-comercial-ganar-premio-o-exito-asociacion-o-cooperar-concepto-equipo-negocios-personas-celebran-ayudar-llevar-gran-trofeo-ganador_212586-1811.jpg"} alt="Logro" />
+      </div>
+      {/* Texto dentro del recuadro */}
+      <div className="card-content">
+        <h2 className="card-title">
+          {icon} {title}
+        </h2>
+        <div className="card-description">{description}</div>
       </div>
     </div>
   );
 };
 
-export default VideoCard;
+export default CardL;

@@ -1,98 +1,90 @@
-/* Alinear todo el texto de los párrafos a la izquierda */
-p-L {
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-/* Cambiar el color de la categoría a verde */
-.category-L {
-  color: green;
-}
-
-/* Contenedor principal de tarjetas */
-.tarjetas_logro-L {
+.card-logro {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem; /* Espacio entre tarjetas */
-  padding: 2rem;
-}
-
-/* VideoCard para ajustar tamaño y formato */
-.card-container-L {
-  flex: 0 1 calc(33.33% - 2rem); /* 3 tarjetas por fila */
-  box-sizing: border-box;
-}
-
-.video-card-L {
-  position: relative;
-  width: 60%;
-  height: 500px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: #000;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.video-card-L:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Tipografía más amigable y redonda */
-body-L, p-L, h1-L, h2-L, h3-L {
-  font-family: 'Poppins', Arial, sans-serif;
-  font-weight: 500;
-  margin: 0;
-  font-size: 2.2rem !important;
-}
-
-.card-title-L {
-  font-size: 5rem !important;
-}
-
-.details-text-L {
-  font-size: 1.9rem !important;
-}
-
-.card-title-L {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: #000;
-  color: #fff;
-  text-align: center;
-  padding: 0.5rem 0;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.details-text-L {
-  font-size: 1.9rem;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.details-overlay-L {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  text-align: center;
-  padding: 1rem;
-  box-sizing: border-box;
+  justify-content: center; /* Asegura que el contenido esté centrado */
+  margin: 20px 0;
+  padding: 16px;
+  background: transparent; /* Fondo transparente */
+  flex-wrap: wrap; /* Permite que los elementos se apilen si no caben horizontalmente */
+  gap: 16px;
 }
 
-.video-card-L:hover .details-overlay-L {
-  opacity: 1;
+.card-logro.card-reverse {
+  flex-direction: row-reverse; /* Imagen a la derecha */
+}
+
+.card-image {
+  flex-shrink: 0; /* Evita que la imagen se encoja */
+  margin: 0 16px;
+  text-align: center; /* Centra la imagen si se apila */
+}
+
+.card-image img {
+  width: 100%; /* Ajuste automático para que sea responsivo */
+  max-width: 450px; /* Ancho máximo para dispositivos grandes */
+  height: 450px; /* Mantén la proporción de la imagen */
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid orange;
+}
+
+.card-content {
+  flex-grow: 0; /* Evita que se expanda automáticamente */
+  width: 1150px; /* Tamaño fijo (ajustable según tu diseño) */
+  height: 250px; /* Mantén la altura deseada */
+  border: 2px solid orange; /* Borde naranja */
+  border-radius: 8px;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+  color: #fff; /* Mejor contraste en texto */
+  overflow: hidden; /* Esconde contenido adicional si el texto es demasiado largo */
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-align: center; /* Centra el título */
+}
+
+.card-description {
+  font-size: 1rem;
+  text-align: center; /* Centra la descripción */
+}
+
+.card-description .logro-fecha,
+.card-description .logro-categoria {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #c7c7c7;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .card-logro {
+    flex-direction: column; /* Apila imagen y contenido en pantallas pequeñas */
+  }
+
+  .card-logro.card-reverse {
+    flex-direction: column; /* Apila incluso cuando está en "reverse" */
+  }
+
+  .card-content {
+    width: 90%; /* Usa casi todo el ancho de la pantalla */
+    height: auto; /* Deja que se ajuste dinámicamente */
+  }
+
+  .card-image img {
+    max-width: 200px; /* Ajusta el tamaño máximo de la imagen */
+  }
+}
+
+@media (max-width: 480px) {
+  .card-title {
+    font-size: 1.2rem; /* Reduce el tamaño del texto en pantallas pequeñas */
+  }
+
+  .card-description {
+    font-size: 0.9rem; /* Ajusta el tamaño del texto */
+  }
 }

@@ -8,7 +8,9 @@ const userRoutes = require('./routes/userRoutes');
 const noticiasRoutes = require('./routes/noticiasRoutes');
 const acreditacionesRoutes = require('./routes/acreditacionRoutes');
 const materiasRoutes = require('./routes/materiaRoutes');
-const logrosRoutes = require('./routes/logroRoute.js'); // Importa las rutas de logros
+const logrosRoutes = require('./routes/logroRoute.js'); 
+const estudianteRoutes = require('./routes/estudianteRoutes.js'); // Importa las rutas de logros
+
 
 const app = express();
 const PORT = 5000;
@@ -36,7 +38,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/noticias', noticiasRoutes);
 app.use('/api/acreditaciones', acreditacionesRoutes);
 app.use('/api/materias', materiasRoutes);
-app.use('/api/logros', logrosRoutes); // Agrega la ruta para logros
+app.use('/api/logros', logrosRoutes); 
+app.use('/api/estudiantes', estudianteRoutes); // Agrega la ruta para logros
+
 
 // Iniciar el servidor
 app.listen(PORT, () => console.log(`Servidor corriendo en http://localhost:${PORT}`));
