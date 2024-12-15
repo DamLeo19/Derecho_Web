@@ -1,55 +1,67 @@
 .card-logro {
   display: flex;
   align-items: center;
-  justify-content: center; /* Asegura que el contenido esté centrado */
+  justify-content: center;
   margin: 20px 0;
   padding: 16px;
-  background: transparent; /* Fondo transparente */
-  flex-wrap: wrap; /* Permite que los elementos se apilen si no caben horizontalmente */
+  background: transparent;
+  flex-wrap: wrap;
   gap: 16px;
+  opacity: 0; /* Ocultar inicialmente */
+  transform: translateY(20px); /* Empujar hacia abajo inicialmente */
+  animation: fadeInUp 1s ease-in-out forwards; /* Animación */
 }
 
 .card-logro.card-reverse {
-  flex-direction: row-reverse; /* Imagen a la derecha */
+  flex-direction: row-reverse;
 }
 
 .card-image {
-  flex-shrink: 0; /* Evita que la imagen se encoja */
+  flex-shrink: 0;
   margin: 0 16px;
-  text-align: center; /* Centra la imagen si se apila */
+  text-align: center;
+  animation: slideIn 1s ease-in-out forwards; /* Animación */
 }
 
 .card-image img {
-  width: 100%; /* Ajuste automático para que sea responsivo */
-  max-width: 450px; /* Ancho máximo para dispositivos grandes */
-  height: 450px; /* Mantén la proporción de la imagen */
+  width: 100%;
+  max-width: 450px;
+  height: 450px;
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid orange;
 }
 
 .card-content {
-  flex-grow: 0; /* Evita que se expanda automáticamente */
-  width: 1150px; /* Tamaño fijo (ajustable según tu diseño) */
-  height: 250px; /* Mantén la altura deseada */
-  border: 2px solid orange; /* Borde naranja */
+  flex-grow: 0;
+  width: 1150px;
+  height: 250px;
+  border: 2px solid orange;
   border-radius: 8px;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
-  color: #fff; /* Mejor contraste en texto */
-  overflow: hidden; /* Esconde contenido adicional si el texto es demasiado largo */
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  overflow: hidden;
+  opacity: 0; /* Ocultar inicialmente */
+  transform: scale(0.9); /* Reducir tamaño inicialmente */
+  animation: scaleIn 1s ease-in-out forwards 0.5s; /* Animación con retraso */
+  
 }
 
 .card-title {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 8px;
-  text-align: center; /* Centra el título */
+  text-align: center;
+  opacity: 0; /* Ocultar inicialmente */
+  animation: fadeIn 1s ease-in-out forwards 0.7s; /* Animación con retraso */
 }
 
 .card-description {
   font-size: 1rem;
-  text-align: center; /* Centra la descripción */
+  text-align: center;
+  opacity: 0; /* Ocultar inicialmente */
+  animation: fadeIn 1s ease-in-out forwards 1s; /* Animación con retraso */
 }
 
 .card-description .logro-fecha,
@@ -62,29 +74,72 @@
 /* Estilos responsivos */
 @media (max-width: 768px) {
   .card-logro {
-    flex-direction: column; /* Apila imagen y contenido en pantallas pequeñas */
+    flex-direction: column;
   }
 
   .card-logro.card-reverse {
-    flex-direction: column; /* Apila incluso cuando está en "reverse" */
+    flex-direction: column;
   }
 
   .card-content {
-    width: 90%; /* Usa casi todo el ancho de la pantalla */
-    height: auto; /* Deja que se ajuste dinámicamente */
+    width: 90%;
+    height: auto;
   }
 
   .card-image img {
-    max-width: 200px; /* Ajusta el tamaño máximo de la imagen */
+    max-width: 200px;
   }
 }
 
 @media (max-width: 480px) {
   .card-title {
-    font-size: 1.2rem; /* Reduce el tamaño del texto en pantallas pequeñas */
+    font-size: 1.2rem;
   }
 
   .card-description {
-    font-size: 0.9rem; /* Ajusta el tamaño del texto */
+    font-size: 0.9rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
