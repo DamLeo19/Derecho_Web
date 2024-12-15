@@ -1,0 +1,172 @@
+/* Botón circular */
+.circular-button {
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  .circular-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    background-color: #222;
+    color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 18s00px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    text-align: center;
+  }
+  
+  /* Botón de cerrar */
+  .close-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .close-button:hover {
+    color: orange;
+  }
+  
+  /* Contenido de los datos */
+  .modal-data h2 {
+    margin-bottom: 10px;
+  }
+  
+  .modal-data p {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  /* Tabla de logros */
+.tabla-logros {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+  }
+  
+  .tabla-logros th, .tabla-logros td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .tabla-logros th {
+    background-color: #333;
+    color: rgb(255, 255, 255);
+  }
+  
+  .tabla-logros tr:nth-child(even) {
+    background-color: #ac5702;
+  }
+  
+  .tabla-logros tr:hover {
+    background-color: #5f1e03;
+  }
+  
+  /* Botón de eliminar */
+  .delete-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .delete-button:hover {
+    background-color: darkred;
+  }
+  
+  /* Formulario */
+  .form-logro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .submit-button {
+    padding: 10px;
+    background-color: orange;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
+  .submit-button:hover {
+    background-color: darkorange;
+  }
+  
+  
+  .form-logro input, .form-logro textarea, .form-logro button {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+  }
+  
+  .form-logro button {
+    background-color: orange;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .form-logro button:hover {
+    background-color: darkorange;
+  }
+  
+  /* Mensaje de error */
+  .error-message {
+    color: red;
+    margin-top: 10px;
+  }
+  

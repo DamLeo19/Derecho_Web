@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CardL from "../components/CardL"; // Componente reutilizable
+import Editar from "../components/Editar"; // Importa el componente Editar
 import axios from "axios";
 import "./logros.css";
 import "../components/CardDocentes.css";
@@ -13,7 +14,6 @@ const NuevaPagina = () => {
   const [errorLogros, setErrorLogros] = useState(null);
   const [errorEstudiantes, setErrorEstudiantes] = useState(null);
 
-  // Cargar logros
   useEffect(() => {
     const fetchLogros = async () => {
       try {
@@ -28,7 +28,6 @@ const NuevaPagina = () => {
     fetchLogros();
   }, []);
 
-  // Cargar estudiantes destacados
   useEffect(() => {
     const fetchEstudiantes = async () => {
       try {
@@ -45,17 +44,20 @@ const NuevaPagina = () => {
 
   return (
     <div className="nueva-pagina_logro dark:bg-gray-900 dark:text-white">
-      {/* Banner principal */}
       <div className="logro-banner">
         <div className="logro-overlay">
           <h1 className="logro-title">Logros</h1>
         </div>
       </div>
       <main className="contenido_logro">
-        {/* Sección de logros */}
-        <h1-L className="titulo-principal_logro">
-          ¡La carrera de derecho tiene los siguientes enorgullecentes logros para la universidad!
-        </h1-L>
+        {/* Contenedor del título y botón de edición */}
+        <div className="titulo-con-editar">
+          <h1-L className="titulo-principal_logro">
+            ¡La carrera de derecho tiene los siguientes enorgullecentes logros para la universidad!
+          </h1-L>
+          <Editar data="Contenido editable relacionado con logros" />
+        </div>
+
         <section className="logros_logro">
           <div className="tarjetas_logro">
             {errorLogros ? (
@@ -86,8 +88,6 @@ const NuevaPagina = () => {
           </div>
         </section>
 
-
-        {/* Sección de estudiantes destacados */}
         <section className="estudiantes-destacados">
           <h1>Top Estudiantes Destacados</h1>
           <div className="tarjetas-estudiantes">
@@ -98,17 +98,19 @@ const NuevaPagina = () => {
                 <div className="tarjeta-estudiante-con-indicador" key={index}>
                   <span className="indicador">{`${index + 1}°`}</span>
                   <CardDocentes
-                      title={estudiante.nombre}
-                      description={
-                        <>
-                          <p>Promedio: {estudiante.promedio}</p>
-                          <p>Semestre: {estudiante.semestre}</p>
-                          <p>Descripción: {estudiante.descripcion}</p>
-                        </>
-                      }
-                      imageUrl={estudiante.imagen || "https://img.freepik.com/vector-premium/logro-equipo-trabajo-equipo-colaborar-trabajar-juntos-lograr-objetivo-comercial-ganar-premio-o-exito-asociacion-o-cooperar-concepto-equipo-negocios-personas-celebran-ayudar-llevar-gran-trofeo-ganador_212586-1811.jpg"}
-                    />
-
+                    title={estudiante.nombre}
+                    description={
+                      <>
+                        <p>Promedio: {estudiante.promedio}</p>
+                        <p>Semestre: {estudiante.semestre}</p>
+                        <p>Descripción: {estudiante.descripcion}</p>
+                      </>
+                    }
+                    imageUrl={
+                      estudiante.imagen ||
+                      "https://img.freepik.com/vector-premium/logro-equipo-trabajo-equipo-colaborar-trabajar-juntos-lograr-objetivo-comercial-ganar-premio-o-exito-asociacion-o-cooperar-concepto-equipo-negocios-personas-celebran-ayudar-llevar-gran-trofeo-ganador_212586-1811.jpg"
+                    }
+                  />
                 </div>
               ))
             ) : (

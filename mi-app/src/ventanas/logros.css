@@ -163,6 +163,19 @@ body {
   font-weight: bold;
   font-size: 18px;
 }
+.titulo-con-editar {
+  display: flex;
+  align-items: center;
+  gap: 1200px; /* Espacio entre el título y el botón */
+}
+
+.titulo-principal_logro {
+  flex: 1;
+}
+
+.circular-button {
+  margin-left: auto; /* Lleva el botón al extremo derecho */
+}
 
 
 
